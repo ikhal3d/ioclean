@@ -1,0 +1,194 @@
+/* ============================================================
+ * buttons.css
+ * Premium button system — primary, ghost, magnetic, glow.
+ * All button visuals work without JS; magnetic effect is a
+ * progressive enhancement applied by /assets/js/modules/magnetic.js.
+ * ============================================================ */
+
+.btn {
+  --btn-py: 0.92rem;
+  --btn-px: 1.5rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: var(--btn-py) var(--btn-px);
+  border-radius: var(--r-pill);
+  font-weight: 500;
+  font-size: 0.94rem;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  isolation: isolate;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 380ms var(--ease-out),
+    box-shadow var(--t-base) var(--ease-out),
+    background var(--t-base) var(--ease-out),
+    color var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+  will-change: transform;
+}
+
+.btn:active { transform: translateY(0) scale(0.985); }
+
+.btn__icon {
+  display: inline-flex;
+  width: 16px; height: 16px;
+}
+.btn__icon svg { width: 100%; height: 100%; }
+
+.btn--sm { --btn-py: 0.6rem; --btn-px: 1.1rem; font-size: 0.85rem; }
+.btn--lg { --btn-py: 1.05rem; --btn-px: 1.85rem; font-size: 1rem; }
+
+/* —— Primary ——————————————————————————————————————————— */
+.btn--primary {
+  color: #fff;
+  background: var(--g-primary);
+  box-shadow: var(--shadow-btn);
+}
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--g-primary-hot);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--t-base) var(--ease-out);
+}
+.btn--primary::after {
+  /* Specular shimmer */
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-22deg);
+  transition: left 700ms var(--ease-out);
+  z-index: 1;
+  pointer-events: none;
+}
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-h);
+}
+.btn--primary:hover::before { opacity: 1; }
+.btn--primary:hover::after  { left: 130%; }
+
+/* —— Ghost ——————————————————————————————————————————— */
+.btn--ghost {
+  color: var(--c-ink-0);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border-color: var(--c-line-2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+/* —— Quiet (text-style with arrow) ——————————————————— */
+.btn--quiet {
+  background: transparent;
+  color: var(--c-violet-200);
+  padding: 0.4rem 0;
+  font-size: 0.92rem;
+  border-radius: 0;
+}
+.btn--quiet:hover { color: var(--c-ink-0); }
+.btn--quiet .btn__icon { transition: transform var(--t-base) var(--ease-out); }
+.btn--quiet:hover .btn__icon { transform: translateX(4px); }
+
+/* —— Icon-only round ————————————————————————————————— */
+.btn--icon {
+  width: 44px; height: 44px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* —— Conic glow ring (animated angle) ————————————————— */
+.btn--glow {
+  position: relative;
+}
+.btn--glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle, 0deg),
+              var(--c-violet-500), var(--c-blue-500), var(--c-magenta-500), var(--c-violet-500));
+  filter: blur(14px);
+  opacity: 0.55;
+  z-index: -2;
+  animation: angle-spin 6s linear infinite;
+}
+@keyframes angle-spin {
+  to { --angle: 360deg; }
+}
+
+/* —— Magnetic — applied dynamically via JS, no CSS state ——
+ * The JS adds translate3d() to the .btn directly.
+ * The CSS only sets the timing so transitions feel buttery.
+ * ———————————————————————————————————————————————————— */
+.btn[data-magnetic] {
+  transition:
+    transform 240ms var(--ease-out),
+    box-shadow var(--t-base) var(--ease-out),
+    background var(--t-base) var(--ease-out),
+    color var(--t-base) var(--ease-out),
+    border-color var(--t-base) var(--ease-out);
+}
+.btn[data-magnetic] .btn__label,
+.btn[data-magnetic] .btn__icon {
+  transition: transform 240ms var(--ease-out);
+}
+
+/* —— Phone/quote floating action ————————————————————— */
+.float-actions {
+  position: fixed;
+  bottom: 18px; right: 18px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+.float-actions > * { pointer-events: auto; }
+
+.fab {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff;
+  position: relative;
+  background: var(--g-primary);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform var(--t-base) var(--ease-out),
+              box-shadow var(--t-base) var(--ease-out);
+}
+.fab svg { width: 22px; height: 22px; }
+.fab:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 18px 40px rgba(139, 92, 246, 0.6);
+}
+.fab--phone { background: linear-gradient(135deg, var(--c-cyan-400), var(--c-indigo-500)); }
+.fab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: fab-ping 2.4s ease-out infinite;
+  opacity: 0;
+}
+@keyframes fab-ping {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.7); opacity: 0;   }
+}
