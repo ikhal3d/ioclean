@@ -123,89 +123,72 @@
   max-width: 60ch;
 }
 
-/* —— Orbital visual (abstract clean rings) ———————————— */
-.orbit {
+/* —— Clean ripple visual ——————————————————————————————
+ * A single "drop" at the centre + concentric rings expanding outward,
+ * staggered so a new ring emerges continuously. Evokes a drop of
+ * clean water spreading. No orbiting satellites — keeps it clearly
+ * about cleaning, not orbital mechanics.
+ * ———————————————————————————————————————————————————— */
+
+.ripples {
   position: relative;
   width: 100%; height: 100%;
 }
-.orbit__ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  animation: orbit-rotate 60s linear infinite;
-}
-.orbit__ring--2 { inset: 12%; border-color: rgba(167, 139, 250, 0.22); animation-duration: 80s; animation-direction: reverse; }
-.orbit__ring--3 { inset: 24%; border-color: rgba(99, 102, 241, 0.28); animation-duration: 50s; }
-.orbit__ring--4 { inset: 36%; border-color: rgba(217, 70, 239, 0.3); animation-duration: 40s; animation-direction: reverse; }
 
-.orbit__core {
+.ripples__glow {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.32), transparent 70%);
+  filter: blur(50px);
+  z-index: -1;
+  animation: blob-drift 22s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ripples__core {
   position: absolute;
   top: 50%; left: 50%;
-  width: 24%; height: 24%;
+  width: 14%;
+  aspect-ratio: 1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), transparent 40%),
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85), transparent 45%),
     var(--g-primary);
   box-shadow:
-    0 0 80px rgba(139, 92, 246, 0.65),
-    inset 0 -10px 30px rgba(0, 0, 0, 0.3);
-  animation: core-pulse 4s ease-in-out infinite;
+    0 0 80px rgba(139, 92, 246, 0.6),
+    inset 0 -10px 28px rgba(0, 0, 0, 0.28);
+  animation: core-pulse 4.4s ease-in-out infinite;
+  z-index: 2;
 }
 @keyframes core-pulse {
-  0%, 100% { box-shadow: 0 0 80px rgba(139, 92, 246, 0.65), inset 0 -10px 30px rgba(0, 0, 0, 0.3); }
-  50%      { box-shadow: 0 0 120px rgba(167, 139, 250, 0.85), inset 0 -10px 30px rgba(0, 0, 0, 0.3); }
+  0%, 100% { box-shadow: 0 0 70px rgba(139, 92, 246, 0.55), inset 0 -10px 28px rgba(0, 0, 0, 0.28); }
+  50%      { box-shadow: 0 0 120px rgba(167, 139, 250, 0.85), inset 0 -10px 28px rgba(0, 0, 0, 0.28); }
 }
 
-/* Orbital satellites — wrapped pattern so radius scales with container.
- * Each .orbit__sat-wrap fills the container then is shrunk inward
- * by `inset`; rotating the wrapper traces the satellite along
- * the wrapper's edge.
- */
-.orbit__sat-wrap {
+/* The expanding rings — same starting size as the core, scale outward */
+.ripples__ring {
   position: absolute;
-  inset: 4%;
-  animation: orbit-spin 22s linear infinite;
+  top: 50%; left: 50%;
+  width: 14%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.5px solid rgba(167, 139, 250, 0.7);
   transform-origin: center;
+  animation: ripple-spread 4.4s var(--ease-out) infinite;
+  opacity: 0;
   pointer-events: none;
 }
-.orbit__sat-wrap--a { inset: 4%;  animation-duration: 22s; }
-.orbit__sat-wrap--b { inset: 18%; animation-duration: 16s; animation-direction: reverse; }
-.orbit__sat-wrap--c { inset: 30%; animation-duration: 12s; }
+.ripples__ring--1 { animation-delay: 0s;   }
+.ripples__ring--2 { animation-delay: 0.7s; border-color: rgba(196, 181, 253, 0.65); }
+.ripples__ring--3 { animation-delay: 1.4s; border-color: rgba(167, 139, 250, 0.55); }
+.ripples__ring--4 { animation-delay: 2.1s; border-color: rgba(147, 197, 253, 0.45); }
+.ripples__ring--5 { animation-delay: 2.8s; border-color: rgba(217, 70, 239, 0.4);   }
 
-.orbit__satellite {
-  position: absolute;
-  top: 50%; left: -7px;
-  transform: translateY(-50%);
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--g-primary);
-  box-shadow: 0 0 16px rgba(167, 139, 250, 0.9);
-}
-.orbit__satellite::after {
-  content: "";
-  position: absolute; inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(167, 139, 250, 0.5);
-  animation: sat-ping 2.5s ease-out infinite;
-}
-@keyframes sat-ping {
-  0%   { transform: scale(1);   opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0;   }
-}
-
-@keyframes orbit-rotate { to { transform: rotate(360deg); } }
-@keyframes orbit-spin   { to { transform: rotate(360deg); } }
-
-.orbit__glow {
-  position: absolute;
-  inset: -30%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.3), transparent 70%);
-  filter: blur(40px);
-  z-index: -1;
-  animation: blob-drift 22s ease-in-out infinite;
+@keyframes ripple-spread {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.85; border-width: 2px;  }
+  100% { transform: translate(-50%, -50%) scale(6.5);  opacity: 0;    border-width: 0.4px; }
 }
 
 /* Stats strip below hero */
