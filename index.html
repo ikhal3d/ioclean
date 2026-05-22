@@ -523,7 +523,31 @@
           <!-- Map -->
           <div class="map-wrap reveal reveal--left">
             <div class="map-wrap__glow"></div>
-            <svg viewBox="0 0 1024 1024" role="img" aria-label="Map of Australia with Victoria highlighted and Melbourne marked">
+            <span class="map-wrap__corner" aria-hidden="true"></span>
+
+            <!-- HUD chrome -->
+            <div class="map-wrap__hud map-wrap__hud--tl"><span class="live"></span><b>ioclean · MEL-OPS</b></div>
+            <div class="map-wrap__hud map-wrap__hud--tr">COVERAGE / VIC<br/>GRID 5°</div>
+            <div class="map-wrap__hud map-wrap__hud--bl">MELBOURNE · 37.8°S 145°E</div>
+            <div class="map-wrap__hud map-wrap__hud--br">24/7 DISPATCH</div>
+
+            <svg viewBox="0 0 1024 1024" role="img" aria-label="Map of Australia with Melbourne marked">
+              <!-- Faint lat/lon grid (every ~5° equivalent) -->
+              <g class="noc-grid">
+                <line x1="0"    y1="170"  x2="1024" y2="170"  />
+                <line x1="0"    y1="320"  x2="1024" y2="320"  />
+                <line x1="0"    y1="470"  x2="1024" y2="470"  />
+                <line x1="0"    y1="620"  x2="1024" y2="620"  />
+                <line x1="0"    y1="770"  x2="1024" y2="770"  />
+                <line x1="0"    y1="920"  x2="1024" y2="920"  />
+                <line x1="170"  y1="0"    x2="170"  y2="1024" />
+                <line x1="320"  y1="0"    x2="320"  y2="1024" />
+                <line x1="470"  y1="0"    x2="470"  y2="1024" />
+                <line x1="620"  y1="0"    x2="620"  y2="1024" />
+                <line x1="770"  y1="0"    x2="770"  y2="1024" />
+                <line x1="920"  y1="0"    x2="920"  y2="1024" />
+              </g>
+
               <!-- Australia outline: traced from mapsicon (MIT licensed)
                    https://github.com/djaiss/mapsicon
                    Group transform is the same potrace-output flip mapsicon uses. -->
@@ -532,16 +556,17 @@
                 <path class="au-outline" vector-effect="non-scaling-stroke" d="M7968 1199 l3 -122 54 -72 c56 -77 69 -99 109 -188 l25 -57 -29 15 c-16 8 -31 15 -34 15 -2 0 15 -54 38 -120 37 -106 48 -127 93 -173 28 -29 62 -74 76 -101 l24 -49 64 2 c35 1 78 -3 95 -8 24 -7 35 -5 45 5 8 7 32 20 54 27 28 10 41 20 43 36 3 19 0 21 -25 15 l-28 -6 30 26 c17 14 35 25 41 26 6 0 9 13 6 31 -3 23 1 34 17 45 11 8 21 24 21 35 0 23 4 23 35 3 23 -15 23 -16 7 -44 -16 -28 -16 -30 8 -55 l25 -26 18 23 c15 18 18 32 13 67 -8 55 10 201 30 259 13 34 20 42 41 42 l25 0 -7 188 -7 187 -36 38 c-20 20 -41 37 -48 37 -6 0 -41 -13 -77 -30 -51 -23 -81 -30 -127 -30 -39 0 -69 -6 -86 -16 -14 -9 -50 -23 -80 -30 l-55 -12 -119 54 c-110 50 -216 83 -265 84 -19 0 -20 -6 -17 -121z" />
               </g>
 
-              <!-- Concentric pulse rings + dot — anchored on Melbourne, southern Victoria -->
-              <circle class="mel-ring mel-ring--a" cx="775" cy="800" r="7" />
-              <circle class="mel-ring mel-ring--b" cx="775" cy="800" r="7" />
-              <circle class="mel-ring mel-ring--c" cx="775" cy="800" r="7" />
-              <circle class="mel-dot"             cx="775" cy="800" r="5" />
+              <!-- Melbourne — amber landing point with pulse rings + halo -->
+              <circle class="mel-dot-halo"          cx="810" cy="798" r="9" />
+              <circle class="mel-ring mel-ring--a"  cx="810" cy="798" r="9" />
+              <circle class="mel-ring mel-ring--b"  cx="810" cy="798" r="9" />
+              <circle class="mel-ring mel-ring--c"  cx="810" cy="798" r="9" />
+              <circle class="mel-dot"               cx="810" cy="798" r="4" />
 
-              <!-- Callout line and label -->
-              <line x1="782" y1="800" x2="862" y2="800"
-                    stroke="rgba(167,139,250,0.55)" stroke-width="1.4" stroke-dasharray="3 4" />
-              <g transform="translate(870, 796)">
+              <!-- Callout to label -->
+              <line x1="820" y1="798" x2="892" y2="798"
+                    stroke="rgba(251, 191, 36, 0.55)" stroke-width="1.2" stroke-dasharray="3 4" />
+              <g transform="translate(900, 794)">
                 <text class="mel-label" font-size="22">Melbourne</text>
                 <text class="mel-label--sub" y="22" font-size="14">HQ · 24/7 dispatch</text>
               </g>
