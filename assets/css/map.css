@@ -69,17 +69,22 @@
 
 .mel-dot {
   fill: #fff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
 }
+/* Pulsing rings — transform-box: fill-box anchors the scale to the
+ * circle's own bounding box centre, regardless of cx/cy. Without this,
+ * SVG defaults to (0,0) and rings shoot off into the bottom-right. */
 .mel-ring {
   fill: none;
   stroke: rgba(217, 70, 239, 0.9);
-  transform-origin: var(--mx, 50%) var(--my, 50%);
+  transform-box: fill-box;
+  transform-origin: center;
   animation: mel-ring 2.6s ease-out infinite;
 }
 .mel-ring--b { animation-delay: -0.85s; }
 .mel-ring--c { animation-delay: -1.7s; }
 @keyframes mel-ring {
-  0%   { stroke-width: 2; opacity: 0.9; transform: scale(0.4); }
+  0%   { stroke-width: 2;   opacity: 0.9; transform: scale(0.4); }
   100% { stroke-width: 0.2; opacity: 0;   transform: scale(2.8); }
 }
 
@@ -98,26 +103,13 @@
   text-transform: uppercase;
 }
 
-/* Droplet falling into Victoria */
-.droplet {
-  fill: rgba(167, 139, 250, 0.95);
-  filter: drop-shadow(0 0 10px var(--c-violet-400));
-  animation: droplet-fall 5s ease-in-out infinite;
-  transform-origin: center bottom;
-}
-@keyframes droplet-fall {
-  0%   { opacity: 0; transform: translateY(-40px) scale(0.6); }
-  18%  { opacity: 1; }
-  60%  { opacity: 1; transform: translateY(0)    scale(1); }
-  62%  { opacity: 0; transform: translateY(0)    scale(1.4); }
-  100% { opacity: 0; transform: translateY(0)    scale(1); }
-}
-
-/* Concentric ripple after the drop lands */
+/* Concentric ripple — fill-box anchors scaling to the circle's own
+ * centre so the rings expand from Melbourne instead of (0,0). */
 .ripple {
   fill: none;
   stroke: rgba(167, 139, 250, 0.7);
   stroke-width: 1.5;
+  transform-box: fill-box;
   transform-origin: center;
   opacity: 0;
   animation: ripple-out 5s ease-out infinite;
@@ -125,7 +117,7 @@
 .ripple--b { animation-delay: 0.4s; stroke: rgba(217, 70, 239, 0.6); }
 .ripple--c { animation-delay: 0.8s; stroke: rgba(59, 130, 246, 0.55); }
 @keyframes ripple-out {
-  0%, 60% { opacity: 0; transform: scale(0.2); }
+  0%, 60% { opacity: 0;   transform: scale(0.2); }
   62%     { opacity: 0.8; transform: scale(0.4); }
   100%    { opacity: 0;   transform: scale(2.6); }
 }
