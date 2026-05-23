@@ -48,6 +48,40 @@ function bind(form) {
   });
 }
 
+/**
+ * Pre-fill the service <select> from a ?service=… URL parameter.
+ * Lets the landing-page service cards deep-link straight into the
+ * contact form with the right option already selected.
+ */
+const SERVICE_MAP = {
+  office:             'Office cleaning',
+  industrial:         'Industrial',
+  medical:            'Medical centre',
+  childcare:          'Childcare',
+  warehouse:          'Warehouse',
+  'end-of-lease':     'End-of-lease',
+  'post-construction':'Post-construction',
+  emergency:          'Emergency clean',
+  'anti-viral':       'Anti-viral deep clean',
+};
+
+function prefillFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('service');
+  if (!slug) return;
+  const target = SERVICE_MAP[slug];
+  if (!target) return;
+  $$('form[data-contact] select[name="service"]').forEach(sel => {
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].textContent.trim() === target) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  });
+}
+
 export function init() {
   $$('form[data-contact]').forEach(bind);
+  prefillFromQuery();
 }

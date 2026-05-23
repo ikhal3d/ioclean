@@ -22,6 +22,16 @@
     box-shadow var(--t-slow) var(--ease-out);
 }
 
+/* When the card is wrapped in an anchor (e.g. service cards link to the
+ * contact form), preserve all card styling but strip the default link
+ * underline + inherit text colour. */
+a.card {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Bright top edge */
 .card::before {
   content: "";

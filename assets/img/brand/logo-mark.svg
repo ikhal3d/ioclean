@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-  <!-- Teardrop / water drop -->
-  <path d="M16 3.5 C 12 9, 7.5 15.5, 7.5 20.5 A 8.5 8.5 0 1 0 24.5 20.5 C 24.5 15.5, 20 9, 16 3.5 Z" fill="currentColor"/>
-  <!-- Subtle highlight on the upper-left curve -->
-  <path d="M11.8 14 C 11 17, 10.6 19.4, 11.4 21.6" stroke="rgba(255,255,255,0.55)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+  <!-- Outer ripple ring (faintest) -->
+  <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="0.8" opacity="0.32"/>
+  <!-- Middle ripple ring -->
+  <circle cx="16" cy="16" r="9.5" stroke="currentColor" stroke-width="0.9" opacity="0.55"/>
+  <!-- Central drop -->
+  <circle cx="16" cy="16" r="5.5" fill="currentColor"/>
+  <!-- Specular highlight -->
+  <circle cx="14.4" cy="14.4" r="1.5" fill="rgba(255,255,255,0.45)"/>
 </svg>
