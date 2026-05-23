@@ -1,0 +1,99 @@
+/* ============================================================
+ * logo.css
+ *
+ * Animated lotus brand mark.
+ *
+ * Markup
+ * ------
+ *   .lotus              the <svg> root
+ *     └── .lotus__body  outer group, gets the gentle float + glow pulse
+ *           └── .lotus__petal × 5   each petal is its own <path>
+ *
+ * Animation principles
+ * --------------------
+ *   · Each petal pivots around its own base (transform-box: fill-box
+ *     + transform-origin: 50% 100%), so the rotation looks like a
+ *     leaf bending at its stem rather than spinning around the centre.
+ *   · Every petal has its own keyframe + duration + negative delay so
+ *     they always read as out-of-phase, never synchronised.
+ *   · Rotation amplitude is intentionally tiny (≈ 2.5°) — looks like
+ *     wind, not a wind-up toy.
+ *   · The whole flower has a separate 1-px vertical float and a slow
+ *     glow pulse, layered on top so the petals' transform stays clean.
+ *   · prefers-reduced-motion strips all animation but keeps the static
+ *     mark perfectly intact.
+ * ============================================================ */
+
+.lotus {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* —— Group: float + glow pulse —— */
+.lotus__body {
+  transform-origin: 50px 60px;
+  animation:
+    lotus-float 8s ease-in-out infinite,
+    lotus-glow  6s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@keyframes lotus-float {
+  0%, 100% { transform: translate(50px, 60px); }
+  50%      { transform: translate(50px, 58.5px); }
+}
+@keyframes lotus-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(112, 99, 243, 0.30)); }
+  50%      { filter: drop-shadow(0 0 11px rgba(125, 214, 251, 0.50)); }
+}
+
+/* —— Petals: each sways independently around its base —— */
+.lotus__petal {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+/* Per-petal sway — each has its own base angle baked into the keyframe
+ * so we never have to recompose transforms across multiple rules. */
+
+.lotus__petal--1 { animation-name: sway-1; animation-duration: 7.4s; animation-delay:  0s;    }
+.lotus__petal--2 { animation-name: sway-2; animation-duration: 8.1s; animation-delay: -1.6s;  }
+.lotus__petal--3 { animation-name: sway-3; animation-duration: 6.8s; animation-delay: -2.9s;  }
+.lotus__petal--4 { animation-name: sway-4; animation-duration: 7.7s; animation-delay: -4.2s;  }
+.lotus__petal--5 { animation-name: sway-5; animation-duration: 8.4s; animation-delay: -5.5s;  }
+
+@keyframes sway-1 {
+  0%, 100% { transform: rotate(-70deg); }
+  50%      { transform: rotate(-67.5deg); }
+}
+@keyframes sway-2 {
+  0%, 100% { transform: rotate(-36deg); }
+  50%      { transform: rotate(-33deg); }
+}
+@keyframes sway-3 {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(2.5deg); }
+}
+@keyframes sway-4 {
+  0%, 100% { transform: rotate(36deg); }
+  50%      { transform: rotate(38.5deg); }
+}
+@keyframes sway-5 {
+  0%, 100% { transform: rotate(70deg); }
+  50%      { transform: rotate(72.5deg); }
+}
+
+/* —— Brand-mark sizing tweak so the SVG sits where the PNG used to —— */
+.brand__mark .lotus { width: 40px; height: 40px; }
+
+/* —— Reduced-motion fallback: static logo, glow stays on quietly —— */
+@media (prefers-reduced-motion: reduce) {
+  .lotus__body,
+  .lotus__petal { animation: none; }
+  .lotus__body  { transform: translate(50px, 60px); filter: drop-shadow(0 0 4px rgba(112, 99, 243, 0.35)); }
+}
