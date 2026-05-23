@@ -1,18 +1,37 @@
 /* ============================================================
  * form.js
- * Client-side stub for the contact form: validates required
- * fields, then shows a success message. Replace handleSubmit
- * with a fetch() to your backend or Formspree when you wire
- * up the real endpoint.
+ * Submits the contact form to FormSubmit (https://formsubmit.co)
+ * which forwards the message to info@ioclean.com.au — no backend
+ * required, no signup; first submission triggers a one-time
+ * email confirmation from FormSubmit to verify the recipient.
  * ============================================================ */
 
 import { $$ } from './utils.js';
 
+const ENDPOINT = 'https://formsubmit.co/ajax/info@ioclean.com.au';
+
 async function handleSubmit(form) {
-  // Future: const res = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
-  // Until then, simulate a small delay so the UX feels real.
-  await new Promise(r => setTimeout(r, 600));
-  return { ok: true };
+  const data = new FormData(form);
+  // FormSubmit control fields (hidden meta — read by the service):
+  data.append('_subject',  'New ioclean quote request');
+  data.append('_template', 'table');
+  data.append('_captcha',  'false');
+  data.append('_autoresponse',
+    "Thanks for reaching out to ioclean — we've received your quote " +
+    "request and will be back to you within one business day. " +
+    "For anything urgent, call (03) 0000 0000.");
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data,
+    });
+    return { ok: res.ok };
+  } catch (err) {
+    console.warn('Form submit failed:', err);
+    return { ok: false };
+  }
 }
 
 function bind(form) {

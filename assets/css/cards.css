@@ -86,9 +86,10 @@ a.card {
   width: 54px; height: 54px;
   border-radius: 14px;
   display: grid; place-items: center;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(59, 130, 246, 0.16));
-  border: 1px solid rgba(167, 139, 250, 0.4);
-  color: var(--c-violet-200);
+  background: linear-gradient(135deg, rgba(155, 139, 244, 0.40), rgba(125, 214, 251, 0.25));
+  border: 1px solid rgba(125, 214, 251, 0.5);
+  color: var(--c-cyan-400);
+  box-shadow: 0 0 22px rgba(125, 214, 251, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition:
     transform 540ms var(--ease-out),
     box-shadow var(--t-slow) var(--ease-out),
@@ -142,9 +143,9 @@ a.card {
   flex: 0 0 auto;
   width: 44px; height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(59, 130, 246, 0.14));
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  color: var(--c-violet-200);
+  background: linear-gradient(135deg, rgba(155, 139, 244, 0.32), rgba(125, 214, 251, 0.20));
+  border: 1px solid rgba(125, 214, 251, 0.45);
+  color: var(--c-cyan-400);
   display: grid; place-items: center;
 }
 .feature-card__icon svg { width: 20px; height: 20px; }
@@ -306,9 +307,9 @@ a.card {
   flex: 0 0 auto;
   width: 42px; height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(59, 130, 246, 0.15));
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  color: var(--c-violet-200);
+  background: linear-gradient(135deg, rgba(155, 139, 244, 0.32), rgba(125, 214, 251, 0.20));
+  border: 1px solid rgba(125, 214, 251, 0.45);
+  color: var(--c-cyan-400);
   display: grid; place-items: center;
 }
 .info-card__ico svg { width: 18px; height: 18px; }

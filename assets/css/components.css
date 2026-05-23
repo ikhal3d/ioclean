@@ -13,16 +13,16 @@
   margin: 0 auto;
 }
 .faq__item {
-  border: 1px solid var(--c-line);
+  border: 1px solid var(--c-line-2);
   border-radius: var(--r-md);
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.008));
+  background: linear-gradient(180deg, rgba(155, 139, 244, 0.06), rgba(125, 214, 251, 0.03));
   transition: border-color var(--t-base) var(--ease-out), background var(--t-base) var(--ease-out);
 }
-.faq__item:hover { border-color: rgba(167, 139, 250, 0.3); }
+.faq__item:hover { border-color: rgba(125, 214, 251, 0.4); }
 .faq__item.is-open {
-  border-color: rgba(167, 139, 250, 0.45);
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.06), rgba(255, 255, 255, 0.008));
+  border-color: rgba(125, 214, 251, 0.55);
+  background: linear-gradient(180deg, rgba(125, 214, 251, 0.10), rgba(155, 139, 244, 0.06));
 }
 
 .faq__q {
@@ -43,7 +43,7 @@
   border-radius: 50%;
   border: 1px solid var(--c-line-2);
   display: grid; place-items: center;
-  color: var(--c-violet-400);
+  color: var(--c-cyan-400);
   flex-shrink: 0;
   transition: transform var(--t-base) var(--ease-out),
               background var(--t-base) var(--ease-out),
@@ -52,8 +52,9 @@
 .faq__chev svg { width: 12px; height: 12px; }
 .faq__item.is-open .faq__chev {
   transform: rotate(180deg);
-  background: rgba(139, 92, 246, 0.18);
-  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(125, 214, 251, 0.20);
+  border-color: rgba(125, 214, 251, 0.55);
+  color: #fff;
 }
 
 .faq__a {
@@ -75,20 +76,25 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--s-6);
-  padding: var(--s-6) var(--s-7);
+  gap: var(--s-7);
+  padding: var(--s-7) var(--s-8);
   border-radius: var(--r-xl);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  border: 1px solid var(--c-line);
+  background:
+    linear-gradient(180deg, rgba(125, 214, 251, 0.06), rgba(155, 139, 244, 0.04)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(125, 214, 251, 0.20);
+  box-shadow: 0 0 40px rgba(125, 214, 251, 0.06);
 }
 .trust-strip__tag {
-  display: inline-flex; align-items: center; gap: 10px;
-  color: var(--c-ink-2);
-  font-size: 0.9rem;
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--c-ink-0);
+  font-size: 0.98rem;
+  font-weight: 500;
 }
 .trust-strip__tag svg {
-  width: 18px; height: 18px;
-  color: var(--c-violet-400);
+  width: 22px; height: 22px;
+  color: var(--c-cyan-400);
+  filter: drop-shadow(0 0 8px rgba(125, 214, 251, 0.45));
 }
 
 /* —— Check list (used in About and packages) ————————— */

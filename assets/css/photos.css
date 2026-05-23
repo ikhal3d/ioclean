@@ -223,10 +223,11 @@
 }
 .compare__list li::before {
   content: "";
-  width: 6px; height: 6px;
+  width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--c-violet-400);
-  box-shadow: 0 0 8px var(--c-violet-400);
+  background: var(--c-cyan-400);
+  box-shadow: 0 0 10px var(--c-cyan-400);
+  flex-shrink: 0;
 }
 
 /* —— Service card photo strip variant (optional) ————————— */
@@ -332,11 +333,14 @@
 
 /* —— Footer legal expansion ————————————————————————————— */
 .footer__legal {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--c-ink-3);
-  line-height: 1.6;
-  margin-top: var(--s-4);
-  padding-top: var(--s-4);
+  line-height: 1.7;
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
   border-top: 1px solid var(--c-line);
+  display: flex; flex-direction: column;
+  gap: 6px;
 }
+.footer__legal p { margin: 0; }
 .footer__legal strong { color: var(--c-ink-1); font-weight: 500; }

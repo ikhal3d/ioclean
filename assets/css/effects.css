@@ -181,9 +181,9 @@
 .chip__ico {
   width: 26px; height: 26px;
   border-radius: 7px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(59, 130, 246, 0.16));
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  color: var(--c-violet-200);
+  background: linear-gradient(135deg, rgba(155, 139, 244, 0.35), rgba(125, 214, 251, 0.22));
+  border: 1px solid rgba(125, 214, 251, 0.45);
+  color: var(--c-cyan-400);
   display: grid; place-items: center;
 }
 .chip__ico svg { width: 14px; height: 14px; }
