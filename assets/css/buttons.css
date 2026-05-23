@@ -112,25 +112,13 @@
   border-radius: 50%;
 }
 
-/* —— Conic glow ring (animated angle) ————————————————— */
-.btn--glow {
-  position: relative;
-}
-.btn--glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: conic-gradient(from var(--angle, 0deg),
-              var(--c-violet-500), var(--c-blue-500), var(--c-magenta-500), var(--c-violet-500));
-  filter: blur(14px);
-  opacity: 0.55;
-  z-index: -2;
-  animation: angle-spin 6s linear infinite;
-}
-@keyframes angle-spin {
-  to { --angle: 360deg; }
-}
+/* —— .btn--glow is now a no-op ————————————————————————
+ * Previously rendered an animated conic-gradient halo behind primary
+ * CTAs (spinning rainbow blur). It read as a gaming/RGB look against
+ * the rest of the brand, so the effect is removed. The class is kept
+ * in markup as a no-op so existing HTML doesn't need editing — the
+ * primary button's own gradient + drop shadow carry the prominence. */
+.btn--glow { position: relative; }
 
 /* —— Magnetic — applied dynamically via JS, no CSS state ——
  * The JS adds translate3d() to the .btn directly.
