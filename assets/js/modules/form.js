@@ -1,25 +1,23 @@
 /* ============================================================
  * form.js
- * Submits the contact form to FormSubmit (https://formsubmit.co)
+ * Submits the contact form to Web3Forms (https://web3forms.com),
  * which forwards the message to info@ioclean.com.au — no backend
- * required, no signup; first submission triggers a one-time
- * email confirmation from FormSubmit to verify the recipient.
+ * required. Get a free access key at https://web3forms.com →
+ * "Create Access Key", then paste it into ACCESS_KEY below.
  * ============================================================ */
 
 import { $$ } from './utils.js';
 
-const ENDPOINT = 'https://formsubmit.co/ajax/info@ioclean.com.au';
+const ENDPOINT   = 'https://api.web3forms.com/submit';
+const ACCESS_KEY = 'PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE';
 
 async function handleSubmit(form) {
   const data = new FormData(form);
-  // FormSubmit control fields (hidden meta — read by the service):
-  data.append('_subject',  'New ioclean quote request');
-  data.append('_template', 'table');
-  data.append('_captcha',  'false');
-  data.append('_autoresponse',
-    "Thanks for reaching out to ioclean. We've received your quote " +
-    "request and will be back to you within one business day. " +
-    "For anything urgent, reply to this email and we'll prioritise it.");
+  // Web3Forms control fields:
+  data.append('access_key', ACCESS_KEY);
+  data.append('subject',    'New ioclean quote request');
+  data.append('from_name',  'ioclean website');
+  data.append('redirect',   'false');
 
   try {
     const res = await fetch(ENDPOINT, {
@@ -27,7 +25,8 @@ async function handleSubmit(form) {
       headers: { 'Accept': 'application/json' },
       body: data,
     });
-    return { ok: res.ok };
+    const json = await res.json().catch(() => ({}));
+    return { ok: res.ok && json.success !== false };
   } catch (err) {
     console.warn('Form submit failed:', err);
     return { ok: false };
