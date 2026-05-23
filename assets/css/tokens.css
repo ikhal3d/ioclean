@@ -114,12 +114,13 @@
   --s-12: 128px;
 
   /* —— Typography ———————————————————————————————————————
-   * Quicksand for the display / heading face — free Google Font in
-   * the same rounded-geometric family as VAG Rounded Next from the
-   * brand kit, matches the look of the ioclean wordmark in the nav.
-   * Didact Gothic for body copy (also free, also from the brand kit). */
+   * Single Quicksand family across the whole site for a cohesive
+   * voice that matches the ioclean wordmark. Weight does the work:
+   * 600 for headings, 500 for body, 400 for small / muted text.
+   * Didact Gothic (brand kit body) only shipped in a single 400
+   * weight, which read as too thin on dark surfaces. */
   --font-display: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body:    'Didact Gothic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --fs-xs:   0.78rem;

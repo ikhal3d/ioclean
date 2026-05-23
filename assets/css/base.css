@@ -23,6 +23,7 @@ body {
   min-height: 100vh;
   font-family: var(--font-body);
   font-size: var(--fs-base);
+  font-weight: 500;
   line-height: 1.55;
   color: var(--c-ink-1);
   /* No background-color on body — html carries the dark navy
