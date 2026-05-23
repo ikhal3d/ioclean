@@ -55,28 +55,14 @@ body::before {
    * Painted over the dark navy fallback on <html> at every scroll
    * position, so the page reads as the brand palette top-to-bottom
    * instead of going flat-dark below the hero. */
+  /* Dark navy fills the viewport; brand colour is added as soft
+   * corner blooms only — no full-page wash, so cards and text
+   * keep their contrast. */
   background:
-    /* top-left violet bloom (matches the hero) */
-    radial-gradient(1100px 700px at 12% -6%,  rgba(112, 99, 243, 0.30), transparent 60%),
-    /* top-right cyan bloom */
-    radial-gradient(900px 600px at 92% 4%,    rgba(125, 214, 251, 0.22), transparent 65%),
-    /* mid-left lavender accent */
-    radial-gradient(900px 700px at 4% 50%,    rgba(155, 139, 244, 0.18), transparent 65%),
-    /* mid-right teal accent */
-    radial-gradient(900px 700px at 102% 55%,  rgba(91, 189, 212, 0.18), transparent 65%),
-    /* lower-left mid-blue accent */
-    radial-gradient(900px 700px at 8% 90%,    rgba(91, 120, 230, 0.20), transparent 65%),
-    /* bottom-centre warm violet */
-    radial-gradient(1100px 700px at 50% 108%, rgba(112, 99, 243, 0.24), transparent 60%),
-    /* very gentle vertical wash so colour is present at every scroll */
-    linear-gradient(180deg,
-      rgba(112, 99, 243, 0.14) 0%,
-      rgba(155, 139, 244, 0.10) 22%,
-      rgba(125, 214, 251, 0.08) 45%,
-      rgba(91, 189, 212, 0.08) 65%,
-      rgba(112, 99, 243, 0.10) 85%,
-      rgba(155, 139, 244, 0.12) 100%),
-    /* dark navy base under the gradient so contrast stays high */
+    radial-gradient(900px 600px at 8% -8%,    rgba(112, 99, 243, 0.22), transparent 60%),
+    radial-gradient(800px 500px at 96% 6%,    rgba(125, 214, 251, 0.14), transparent 60%),
+    radial-gradient(800px 600px at -4% 95%,   rgba(91, 120, 230, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 104% 96%,  rgba(91, 189, 212, 0.14), transparent 60%),
     var(--c-bg-0);
 }
 
