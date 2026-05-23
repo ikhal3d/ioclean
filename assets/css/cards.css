@@ -53,26 +53,12 @@ a.card {
   transition: opacity var(--t-slow) var(--ease-out);
 }
 
-/* Spotlight on hover (mouse-tracked) */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 0%),
-              rgba(167, 139, 250, 0.18), transparent 40%);
-  opacity: 0;
-  transition: opacity var(--t-slow) var(--ease-out);
-  pointer-events: none;
-}
-
 .card:hover {
   transform: translateY(-6px);
   border-color: rgba(167, 139, 250, 0.35);
   box-shadow: var(--shadow-card-1);
 }
 .card:hover::before { opacity: 1; }
-.card:hover::after  { opacity: 1; }
 
 /* —— Service cards ——————————————————————————————————— */
 .service-card {

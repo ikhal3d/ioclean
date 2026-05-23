@@ -1,18 +1,11 @@
 /* ============================================================
  * cards.js
- * Mouse-tracked spotlight on .card and optional tilt on .tilt.
- * Sets CSS custom properties --mx / --my used by cards.css.
+ * Optional 3D tilt on .tilt elements. The card hover-spotlight was
+ * removed (the cursor-tracked radial gradient read as visual haze
+ * across the whole card surface).
  * ============================================================ */
 
 import { $$, prefersReducedMotion } from './utils.js';
-
-function bindSpotlight(card) {
-  card.addEventListener('pointermove', e => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
-    card.style.setProperty('--my', `${((e.clientY - rect.top)  / rect.height) * 100}%`);
-  });
-}
 
 function bindTilt(el) {
   const max = parseFloat(el.dataset.tilt) || 6;
@@ -33,7 +26,6 @@ function bindTilt(el) {
 }
 
 export function init() {
-  $$('.card').forEach(bindSpotlight);
   if (prefersReducedMotion()) return;
   if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   $$('.tilt').forEach(bindTilt);
