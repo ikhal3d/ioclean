@@ -113,6 +113,38 @@
   .subhero__lotus { display: none; }
 }
 
+/* —— Mid-scale lotus animation ——————————————————————————
+ * The .lotus--md is used inside .subhero__lotus / .cta-banner__lotus
+ * at roughly 150–200px wide. At that size the default ±2–3° sway is
+ * barely perceptible; bump amplitude to ±5° and shorten cycle so the
+ * motion actually reads. The keyframes mirror the base sway pattern. */
+.lotus--md .lotus__petal--1 { animation-name: md-sway-1; animation-duration: 6.2s; }
+.lotus--md .lotus__petal--2 { animation-name: md-sway-2; animation-duration: 6.8s; }
+.lotus--md .lotus__petal--3 { animation-name: md-sway-3; animation-duration: 5.8s; }
+.lotus--md .lotus__petal--4 { animation-name: md-sway-4; animation-duration: 6.4s; }
+.lotus--md .lotus__petal--5 { animation-name: md-sway-5; animation-duration: 6.0s; }
+.lotus--md .lotus__petal--6 { animation-name: md-sway-6; animation-duration: 7.0s; }
+.lotus--md .lotus__petal--7 { animation-name: md-sway-7; animation-duration: 6.2s; }
+
+@keyframes md-sway-1 { 0%,100% { transform: rotate(-115deg) scale(0.78); } 50% { transform: rotate(-110deg) scale(0.78); } }
+@keyframes md-sway-2 { 0%,100% { transform: rotate(-75deg)  scale(0.88); } 50% { transform: rotate(-70deg)  scale(0.88); } }
+@keyframes md-sway-3 { 0%,100% { transform: rotate(-35deg)  scale(0.96); } 50% { transform: rotate(-30deg)  scale(0.96); } }
+@keyframes md-sway-4 { 0%,100% { transform: rotate(0deg)    scale(1);    } 50% { transform: rotate(5deg)    scale(1);    } }
+@keyframes md-sway-5 { 0%,100% { transform: rotate(35deg)   scale(0.96); } 50% { transform: rotate(40deg)   scale(0.96); } }
+@keyframes md-sway-6 { 0%,100% { transform: rotate(75deg)   scale(0.88); } 50% { transform: rotate(80deg)   scale(0.88); } }
+@keyframes md-sway-7 { 0%,100% { transform: rotate(115deg)  scale(0.78); } 50% { transform: rotate(120deg)  scale(0.78); } }
+
+/* Bigger float for the mid-scale lotus body too. */
+.lotus--md .lotus__body {
+  animation:
+    md-lotus-float 6.5s ease-in-out infinite,
+    lotus-glow     6s   ease-in-out infinite;
+}
+@keyframes md-lotus-float {
+  0%, 100% { transform: translate(50px, 60px); }
+  50%      { transform: translate(50px, 56px); }
+}
+
 @media (max-width: 880px) {
   .subhero__lotus { display: none; }
 }
