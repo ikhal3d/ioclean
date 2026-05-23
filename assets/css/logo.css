@@ -90,18 +90,27 @@
  *   .beam-divider__lotus tiny mark in the section dividers (44 px)
  * Each shares the same sway/float/glow animations defined above. */
 
+/* Base subhero lotus — sits inside the container's right edge by
+ * default. Each page picks a placement variant so the brand mark
+ * shows up in a different spot rather than always top-right. */
 .subhero__lotus {
   position: absolute;
-  top: 50%;
-  right: clamp(20px, 6vw, 80px);
-  transform: translateY(-50%);
   width: 240px;
   height: 240px;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.85;
   filter: drop-shadow(0 0 28px rgba(112, 99, 243, 0.35));
 }
+
+/* Variants — keep the lotus close to the content rather than the page
+ * edge by anchoring against the container's centre with offsets. */
+.subhero__lotus--right { top: 50%; right: 8%;  transform: translateY(-50%); }
+.subhero__lotus--left  { top: 50%; left:  8%;  transform: translateY(-50%); }
+.subhero__lotus--br    { bottom: -40px; right: 14%; }
+.subhero__lotus--bl    { bottom: -40px; left:  14%; }
+.subhero__lotus--tl    { top: 14%; left: 6%;   transform: translateY(0); }
+
 @media (max-width: 880px) {
   .subhero__lotus { display: none; }
 }

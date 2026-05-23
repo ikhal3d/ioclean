@@ -17,6 +17,7 @@ import * as faq       from './modules/faq.js';
 import * as popup     from './modules/popup.js';
 import * as form      from './modules/form.js';
 import * as textfx    from './modules/text-fx.js';
+import * as phone     from './modules/reveal-phone.js';
 
 const boot = () => {
   splash.init();
@@ -31,6 +32,7 @@ const boot = () => {
   faq.init();
   popup.init();
   form.init();
+  phone.init();
 };
 
 if (document.readyState === 'loading') {
