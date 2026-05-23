@@ -36,18 +36,18 @@
 
 .footer__brandcol p {
   color: var(--c-ink-2);
-  font-size: 0.94rem;
-  line-height: 1.6;
+  font-size: 1.0rem;
+  line-height: 1.65;
   margin-top: var(--s-4);
-  max-width: 36ch;
+  max-width: 38ch;
 }
 
 .footer__title {
   font-family: var(--font-display);
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   color: var(--c-ink-0);
   margin-bottom: var(--s-4);
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .footer__list {
@@ -58,7 +58,7 @@
 }
 .footer__list a {
   color: var(--c-ink-2);
-  font-size: 0.94rem;
+  font-size: 1.0rem;
   transition: color var(--t-fast) var(--ease-out);
   position: relative;
 }
@@ -74,7 +74,7 @@
   flex-wrap: wrap;
   gap: var(--s-3);
   color: var(--c-ink-3);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   position: relative;
 }
 .footer__bottom a {

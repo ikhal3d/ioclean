@@ -14,19 +14,13 @@ export function init() {
 
   if (!nav) return;
 
-  /* —— Sticky shadow + hide-on-scroll-down ——————————————— */
-  let lastY = 0;
+  /* —— Sticky shadow only (no hide-on-scroll) ——————————————
+   * Nav stays anchored at the top of the viewport at every scroll
+   * position. We just toggle a is-scrolled class so the nav gets a
+   * slightly stronger background once the user has scrolled past
+   * the very top. */
   onScroll(() => {
-    const y = window.scrollY;
-    nav.classList.toggle('is-scrolled', y > 24);
-
-    // Hide nav when scrolling down past 200px, reveal on scroll up.
-    if (y > 200 && y > lastY + 6) {
-      nav.classList.add('is-hidden');
-    } else if (y < lastY - 4 || y < 80) {
-      nav.classList.remove('is-hidden');
-    }
-    lastY = y;
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
   });
 
   /* —— Mobile drawer ———————————————————————————————————— */
