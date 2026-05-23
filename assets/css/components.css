@@ -43,7 +43,7 @@
   border-radius: 50%;
   border: 1px solid var(--c-line-2);
   display: grid; place-items: center;
-  color: var(--c-cyan-400);
+  color: var(--c-violet-200);
   flex-shrink: 0;
   transition: transform var(--t-base) var(--ease-out),
               background var(--t-base) var(--ease-out),
@@ -93,8 +93,8 @@
 }
 .trust-strip__tag svg {
   width: 22px; height: 22px;
-  color: var(--c-cyan-400);
-  filter: drop-shadow(0 0 8px rgba(125, 214, 251, 0.45));
+  color: var(--c-violet-200);
+  filter: drop-shadow(0 0 8px rgba(112, 99, 243, 0.5));
 }
 
 /* —— Check list (used in About and packages) ————————— */
@@ -287,7 +287,7 @@
   font-size: 0.95rem;
 }
 .form-success.is-shown { display: flex; }
-.form-success svg { width: 18px; height: 18px; color: var(--c-cyan-400); flex-shrink: 0; }
+.form-success svg { width: 18px; height: 18px; color: var(--c-violet-200); flex-shrink: 0; }
 
 /* —— Popup modal ————————————————————————————————————— */
 .modal {
@@ -376,14 +376,14 @@
   background: var(--c-violet-400);
 }
 .legal-doc a {
-  color: var(--c-cyan-400);
+  color: var(--c-violet-200);
   text-decoration: underline;
-  text-decoration-color: rgba(125, 214, 251, 0.4);
+  text-decoration-color: rgba(112, 99, 243, 0.4);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--t-base) var(--ease-out), color var(--t-base) var(--ease-out);
 }
 .legal-doc a:hover {
   color: #fff;
-  text-decoration-color: var(--c-cyan-400);
+  text-decoration-color: var(--c-violet);
 }
 .legal-doc strong { color: #fff; font-weight: 600; }

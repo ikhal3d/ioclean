@@ -65,8 +65,8 @@
 .photo-badge .live-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--c-cyan-400);
-  box-shadow: 0 0 10px var(--c-cyan-400);
+  background: var(--c-violet);
+  box-shadow: 0 0 10px var(--c-violet);
   animation: dot-pulse 1.6s ease-in-out infinite;
 }
 .photo-badge strong { color: #fff; font-weight: 600; }
@@ -116,7 +116,7 @@
   content: "";
   position: absolute; inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.18), rgba(91, 120, 230, 0.18));
   mix-blend-mode: color;
   pointer-events: none;
 }
@@ -144,7 +144,7 @@
   font-family: var(--font-mono);
   font-weight: 400;
   font-size: 0.72rem;
-  color: var(--c-cyan-400);
+  color: var(--c-violet-200);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 3px;
@@ -190,7 +190,7 @@
   content: "";
   position: absolute; inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.18), rgba(91, 120, 230, 0.18));
   mix-blend-mode: color;
   pointer-events: none;
 }
@@ -210,7 +210,7 @@
   background: rgba(10, 8, 32, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--c-cyan-400);
+  color: var(--c-violet-200);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
@@ -247,8 +247,8 @@
   content: "";
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--c-cyan-400);
-  box-shadow: 0 0 10px var(--c-cyan-400);
+  background: var(--c-violet);
+  box-shadow: 0 0 10px var(--c-violet);
   flex-shrink: 0;
 }
 
@@ -308,7 +308,7 @@
   content: "";
   position: absolute; inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.18), rgba(91, 120, 230, 0.18));
   mix-blend-mode: color;
   pointer-events: none;
 }

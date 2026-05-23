@@ -83,6 +83,55 @@
 @keyframes sway-7 { 0%,100% { transform: rotate(115deg)  scale(0.78); } 50% { transform: rotate(118deg)  scale(0.78); } }
 
 /* ============================================================
+ * Decorative lotus accents sprinkled across the site
+ * ----------------------------------------------------------
+ *   .subhero__lotus    floats right of sub-page hero copy (240 px)
+ *   .cta-banner__lotus floats right inside CTA banners (140 px)
+ *   .beam-divider__lotus tiny mark in the section dividers (44 px)
+ * Each shares the same sway/float/glow animations defined above. */
+
+.subhero__lotus {
+  position: absolute;
+  top: 50%;
+  right: clamp(20px, 6vw, 80px);
+  transform: translateY(-50%);
+  width: 240px;
+  height: 240px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 28px rgba(112, 99, 243, 0.35));
+}
+@media (max-width: 880px) {
+  .subhero__lotus { display: none; }
+}
+
+.cta-banner__lotus {
+  position: absolute;
+  top: 50%;
+  right: 36px;
+  transform: translateY(-50%);
+  width: 140px;
+  height: 140px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 18px rgba(112, 99, 243, 0.4));
+}
+@media (max-width: 880px) {
+  .cta-banner__lotus { display: none; }
+}
+
+.beam-divider__lotus {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 12px rgba(112, 99, 243, 0.45));
+}
+
+/* ============================================================
  * Hero-scale lotus
  * ============================================================ */
 
