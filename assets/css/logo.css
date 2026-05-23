@@ -72,13 +72,15 @@
 .lotus__petal--6 { animation: sway-6 8.4s ease-in-out -6.2s infinite; }
 .lotus__petal--7 { animation: sway-7 7.2s ease-in-out -7.4s infinite; }
 
-@keyframes sway-1 { 0%,100% { transform: rotate(-115deg); } 50% { transform: rotate(-112deg); } }
-@keyframes sway-2 { 0%,100% { transform: rotate(-75deg);  } 50% { transform: rotate(-72deg);  } }
-@keyframes sway-3 { 0%,100% { transform: rotate(-35deg);  } 50% { transform: rotate(-32deg);  } }
-@keyframes sway-4 { 0%,100% { transform: rotate(0deg);    } 50% { transform: rotate(2.5deg);  } }
-@keyframes sway-5 { 0%,100% { transform: rotate(35deg);   } 50% { transform: rotate(38deg);   } }
-@keyframes sway-6 { 0%,100% { transform: rotate(75deg);   } 50% { transform: rotate(78deg);   } }
-@keyframes sway-7 { 0%,100% { transform: rotate(115deg);  } 50% { transform: rotate(118deg);  } }
+/* Graduated petal sizes — top apex largest, outermost smallest.
+ * Scale is baked into the keyframe so it composes with rotation. */
+@keyframes sway-1 { 0%,100% { transform: rotate(-115deg) scale(0.78); } 50% { transform: rotate(-112deg) scale(0.78); } }
+@keyframes sway-2 { 0%,100% { transform: rotate(-75deg)  scale(0.88); } 50% { transform: rotate(-72deg)  scale(0.88); } }
+@keyframes sway-3 { 0%,100% { transform: rotate(-35deg)  scale(0.96); } 50% { transform: rotate(-32deg)  scale(0.96); } }
+@keyframes sway-4 { 0%,100% { transform: rotate(0deg)    scale(1);    } 50% { transform: rotate(2.5deg)  scale(1);    } }
+@keyframes sway-5 { 0%,100% { transform: rotate(35deg)   scale(0.96); } 50% { transform: rotate(38deg)   scale(0.96); } }
+@keyframes sway-6 { 0%,100% { transform: rotate(75deg)   scale(0.88); } 50% { transform: rotate(78deg)   scale(0.88); } }
+@keyframes sway-7 { 0%,100% { transform: rotate(115deg)  scale(0.78); } 50% { transform: rotate(118deg)  scale(0.78); } }
 
 /* ============================================================
  * Hero-scale lotus
@@ -126,13 +128,13 @@
 .lotus--hero .lotus__petal--6 { animation-name: hero-sway-6; }
 .lotus--hero .lotus__petal--7 { animation-name: hero-sway-7; }
 
-@keyframes hero-sway-1 { 0%,100%{transform:rotate(-115deg);} 50%{transform:rotate(-111deg);} }
-@keyframes hero-sway-2 { 0%,100%{transform:rotate(-75deg);}  50%{transform:rotate(-71deg);}  }
-@keyframes hero-sway-3 { 0%,100%{transform:rotate(-35deg);}  50%{transform:rotate(-31deg);}  }
-@keyframes hero-sway-4 { 0%,100%{transform:rotate(0deg);}    50%{transform:rotate(4deg);}    }
-@keyframes hero-sway-5 { 0%,100%{transform:rotate(35deg);}   50%{transform:rotate(39deg);}   }
-@keyframes hero-sway-6 { 0%,100%{transform:rotate(75deg);}   50%{transform:rotate(79deg);}   }
-@keyframes hero-sway-7 { 0%,100%{transform:rotate(115deg);}  50%{transform:rotate(119deg);}  }
+@keyframes hero-sway-1 { 0%,100%{transform:rotate(-115deg) scale(0.78);} 50%{transform:rotate(-111deg) scale(0.78);} }
+@keyframes hero-sway-2 { 0%,100%{transform:rotate(-75deg)  scale(0.88);} 50%{transform:rotate(-71deg)  scale(0.88);} }
+@keyframes hero-sway-3 { 0%,100%{transform:rotate(-35deg)  scale(0.96);} 50%{transform:rotate(-31deg)  scale(0.96);} }
+@keyframes hero-sway-4 { 0%,100%{transform:rotate(0deg)    scale(1);}    50%{transform:rotate(4deg)    scale(1);}    }
+@keyframes hero-sway-5 { 0%,100%{transform:rotate(35deg)   scale(0.96);} 50%{transform:rotate(39deg)   scale(0.96);} }
+@keyframes hero-sway-6 { 0%,100%{transform:rotate(75deg)   scale(0.88);} 50%{transform:rotate(79deg)   scale(0.88);} }
+@keyframes hero-sway-7 { 0%,100%{transform:rotate(115deg)  scale(0.78);} 50%{transform:rotate(119deg)  scale(0.78);} }
 
 .lotus--hero .lotus__body {
   animation:
