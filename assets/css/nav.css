@@ -19,8 +19,8 @@
   gap: var(--s-4);
   background: linear-gradient(180deg, rgba(8, 6, 22, 0.55), rgba(8, 6, 22, 0.35));
   border: 1px solid var(--c-line);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   transition: transform var(--t-base) var(--ease-out),
               background var(--t-base) var(--ease-out),
               box-shadow var(--t-base) var(--ease-out),

@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-  <path d="M11 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="currentColor"/>
-  <path d="M21 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="currentColor" opacity=".7"/>
-  <path d="M8 18.5C8 17.67 8.67 17 9.5 17h13a1.5 1.5 0 0 1 1.5 1.5v.5a8 8 0 0 1-8 8h-0a8 8 0 0 1-8-8v-.5z" fill="currentColor"/>
+  <!-- Teardrop / water drop -->
+  <path d="M16 3.5 C 12 9, 7.5 15.5, 7.5 20.5 A 8.5 8.5 0 1 0 24.5 20.5 C 24.5 15.5, 20 9, 16 3.5 Z" fill="currentColor"/>
+  <!-- Subtle highlight on the upper-left curve -->
+  <path d="M11.8 14 C 11 17, 10.6 19.4, 11.4 21.6" stroke="rgba(255,255,255,0.55)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
 </svg>

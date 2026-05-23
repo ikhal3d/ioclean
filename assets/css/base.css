@@ -13,9 +13,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--c-bg-0);
   -webkit-text-size-adjust: 100%;
+  /* No CSS scroll-behavior here — smooth anchor scrolling is handled
+   * by JS so the native trackpad/wheel scroll stays buttery on macOS. */
 }
 
 body {
@@ -24,15 +25,27 @@ body {
   font-size: var(--fs-base);
   line-height: 1.55;
   color: var(--c-ink-1);
+  background: var(--c-bg-0);
+  overflow-x: clip;
+  letter-spacing: -0.005em;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Ambient gradient backdrop on a fixed-position layer.
+ * Previously this lived on body with background-attachment: fixed,
+ * which repaints on every scroll frame on macOS (causing jank).
+ * As a separate fixed pseudo-element it becomes its own compositor
+ * layer and is reused across scroll frames at zero cost. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(1200px 700px at 12% -10%, rgba(124, 58, 237, 0.18), transparent 55%),
     radial-gradient(900px 600px at 90% 8%,    rgba(59, 130, 246, 0.15), transparent 60%),
-    radial-gradient(800px 800px at 50% 100%,  rgba(167, 139, 250, 0.10), transparent 60%),
-    var(--c-bg-0);
-  background-attachment: fixed;
-  overflow-x: hidden;
-  letter-spacing: -0.005em;
-  font-feature-settings: "ss01", "cv11";
+    radial-gradient(800px 800px at 50% 100%,  rgba(167, 139, 250, 0.10), transparent 60%);
 }
 
 img, svg, video {
