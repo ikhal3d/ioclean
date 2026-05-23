@@ -113,14 +113,25 @@ a.card {
 
 /* —— Feature rows ——————————————————————————————————— */
 .feature-card {
-  display: flex;
-  gap: var(--s-4);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: center;
   padding: var(--s-6);
   border-radius: var(--r-lg);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
   border: 1px solid var(--c-line);
   transition: border-color var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
 }
+/* Icon and title share row 1; description spans both columns on
+ * row 2 so the area beneath the icon isn't dead space. display:
+ * contents on the wrapper div lifts title + desc into the card
+ * grid as direct items. */
+.feature-card > div:nth-child(2) { display: contents; }
+.feature-card__icon  { grid-column: 1; grid-row: 1; align-self: center; }
+.feature-card__title { grid-column: 2; grid-row: 1; align-self: center; }
+.feature-card__desc  { grid-column: 1 / -1; grid-row: 2; }
 .feature-card:hover {
   border-color: rgba(167, 139, 250, 0.35);
   transform: translateY(-2px);
