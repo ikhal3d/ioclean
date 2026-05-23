@@ -74,7 +74,7 @@
           "@type": "ContactPoint",
           "telephone": "+61-3-0000-0000",
           "contactType": "customer service",
-          "email": "hello@ioclean.com.au",
+          "email": "info@ioclean.com.au",
           "areaServed": "AU-VIC",
           "availableLanguage": ["English"]
         }]
@@ -86,7 +86,7 @@
         "image": "https://ioclean.com.au/assets/img/brand/og-image.svg",
         "url": "https://ioclean.com.au/",
         "telephone": "+61-3-0000-0000",
-        "email": "hello@ioclean.com.au",
+        "email": "info@ioclean.com.au",
         "description": "Melbourne's premium commercial cleaning partner. Police-checked teams, eco-grade products, anti-viral protocols, 24/7 availability.",
         "priceRange": "$$",
         "address": {
@@ -265,11 +265,16 @@
             <div class="hero__lotus__glow"></div>
             <svg class="lotus lotus--hero" viewBox="0 0 100 100" role="img" aria-label="ioclean">
               <g class="lotus__body">
-                <path class="lotus__petal lotus__petal--1" fill="#7063F3" fill-opacity="0.78" d="M 0 0 C -8 -10 -10 -28 -5 -40 Q -1 -45 0 -47 Q 1 -45 5 -40 C 10 -28 8 -10 0 0 Z" />
-                <path class="lotus__petal lotus__petal--2" fill="#9B8BF4" fill-opacity="0.78" d="M 0 0 C -8 -10 -10 -28 -5 -40 Q -1 -45 0 -47 Q 1 -45 5 -40 C 10 -28 8 -10 0 0 Z" />
-                <path class="lotus__petal lotus__petal--3" fill="#7DD6FB" fill-opacity="0.78" d="M 0 0 C -8 -10 -10 -28 -5 -40 Q -1 -45 0 -47 Q 1 -45 5 -40 C 10 -28 8 -10 0 0 Z" />
-                <path class="lotus__petal lotus__petal--4" fill="#5B78E6" fill-opacity="0.78" d="M 0 0 C -8 -10 -10 -28 -5 -40 Q -1 -45 0 -47 Q 1 -45 5 -40 C 10 -28 8 -10 0 0 Z" />
-                <path class="lotus__petal lotus__petal--5" fill="#5BBDD4" fill-opacity="0.78" d="M 0 0 C -8 -10 -10 -28 -5 -40 Q -1 -45 0 -47 Q 1 -45 5 -40 C 10 -28 8 -10 0 0 Z" />
+                <!-- 7 rounded ellipse petals, ordered left → right.
+                     Each pivots at its own base (transform-origin: 50% 100%)
+                     and sways through its own keyframe (sway-1 … sway-7). -->
+                <ellipse class="lotus__petal lotus__petal--1" cx="0" cy="-22" rx="9"  ry="22" fill="#6D28D9" fill-opacity="0.72" />
+                <ellipse class="lotus__petal lotus__petal--2" cx="0" cy="-25" rx="10" ry="25" fill="#7063F3" fill-opacity="0.74" />
+                <ellipse class="lotus__petal lotus__petal--3" cx="0" cy="-26" rx="10" ry="26" fill="#9B8BF4" fill-opacity="0.76" />
+                <ellipse class="lotus__petal lotus__petal--4" cx="0" cy="-28" rx="10" ry="28" fill="#7DD6FB" fill-opacity="0.80" />
+                <ellipse class="lotus__petal lotus__petal--5" cx="0" cy="-26" rx="10" ry="26" fill="#5B78E6" fill-opacity="0.76" />
+                <ellipse class="lotus__petal lotus__petal--6" cx="0" cy="-25" rx="10" ry="25" fill="#5BBDD4" fill-opacity="0.74" />
+                <ellipse class="lotus__petal lotus__petal--7" cx="0" cy="-22" rx="9"  ry="22" fill="#7DD6FB" fill-opacity="0.72" />
               </g>
             </svg>
           </div>
@@ -419,61 +424,52 @@
         </header>
 
         <div class="field-gallery reveal">
-          <figure class="field-tile field-tile--tall">
-            <img src="assets/img/photos/team-three-portrait.png"
-                 alt="Three uniformed ioclean crew members with cleaning equipment on site"
-                 loading="lazy" />
+          <figure class="field-tile">
+            <img src="assets/img/photos/team-three-portrait.jpg"
+                 alt="Three uniformed ioclean crew members with cleaning equipment on site" loading="lazy" />
             <figcaption>
               <span class="tile__sub">The crew</span>
               On-site, in uniform, ready to roll
             </figcaption>
           </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/floor-mop-male.png"
+          <figure class="field-tile">
+            <img src="assets/img/photos/floor-mop-male.jpg"
                  alt="ioclean crew member mopping the polished floor of a corporate office" loading="lazy" />
             <figcaption>
               <span class="tile__sub">Corporate offices</span>
-              Daily floor service · CBD
+              Daily floor service
             </figcaption>
           </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/team-kitchen-clean.png"
+          <figure class="field-tile">
+            <img src="assets/img/photos/team-kitchen-clean.jpg"
                  alt="Two ioclean staff wiping down stainless steel kitchen surfaces" loading="lazy" />
             <figcaption>
               <span class="tile__sub">Hospitality</span>
               Kitchen detail clean
             </figcaption>
           </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/vacuum-corridor.png"
+          <figure class="field-tile">
+            <img src="assets/img/photos/vacuum-corridor.jpg"
                  alt="ioclean staff member vacuuming an office corridor" loading="lazy" />
             <figcaption>
-              <span class="tile__sub">Office</span>
-              Corridor &amp; common areas
+              <span class="tile__sub">Office floors</span>
+              Common areas &amp; corridors
             </figcaption>
           </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/window-squeegee.png"
+          <figure class="field-tile">
+            <img src="assets/img/photos/window-squeegee.jpg"
                  alt="ioclean window cleaner using a squeegee on a floor-to-ceiling office window" loading="lazy" />
             <figcaption>
               <span class="tile__sub">Glass &amp; windows</span>
               Full-height detail
             </figcaption>
           </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/glass-shower.png"
+          <figure class="field-tile">
+            <img src="assets/img/photos/glass-shower.jpg"
                  alt="ioclean staff cleaning a glass shower partition in a medical facility" loading="lazy" />
             <figcaption>
               <span class="tile__sub">Medical &amp; bathrooms</span>
               Hospital-grade detail
-            </figcaption>
-          </figure>
-          <figure class="field-tile field-tile--square">
-            <img src="assets/img/photos/floor-mop-pair.png"
-                 alt="Two ioclean staff mopping a polished floor together" loading="lazy" />
-            <figcaption>
-              <span class="tile__sub">Reception &amp; lobby</span>
-              High-traffic zones
             </figcaption>
           </figure>
         </div>
@@ -534,7 +530,7 @@
           <article class="compare__card reveal reveal--left">
             <div class="compare__photo">
               <span class="compare__tag">Commercial</span>
-              <img src="assets/img/photos/office-mop-male.png"
+              <img src="assets/img/photos/office-mop-male.jpg"
                    alt="ioclean staff member mopping an open-plan corporate office" loading="lazy" />
             </div>
             <div class="compare__body">
@@ -553,7 +549,7 @@
           <article class="compare__card reveal reveal--right">
             <div class="compare__photo">
               <span class="compare__tag">Industrial</span>
-              <img src="assets/img/photos/window-squeegee.png"
+              <img src="assets/img/photos/window-squeegee.jpg"
                    alt="ioclean operator cleaning a floor-to-ceiling window in an industrial facility" loading="lazy" />
             </div>
             <div class="compare__body">
@@ -1052,7 +1048,7 @@
           <h5 class="footer__title">Get in touch</h5>
           <ul class="footer__list">
             <li><a href="tel:+61300000000">(03) 0000 0000</a></li>
-            <li><a href="mailto:hello@ioclean.com.au">hello@ioclean.com.au</a></li>
+            <li><a href="mailto:info@ioclean.com.au">info@ioclean.com.au</a></li>
             <li>Melbourne, Victoria</li>
             <li style="color:var(--c-violet-200)">24/7 emergency line</li>
           </ul>

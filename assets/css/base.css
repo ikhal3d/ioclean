@@ -32,10 +32,11 @@ body {
 }
 
 /* Ambient gradient backdrop on a fixed-position layer.
- * Previously this lived on body with background-attachment: fixed,
- * which repaints on every scroll frame on macOS (causing jank).
- * As a separate fixed pseudo-element it becomes its own compositor
- * layer and is reused across scroll frames at zero cost. */
+ * Lives on a separate fixed pseudo-element (not background-attachment:
+ * fixed on body) so it becomes its own compositor layer and isn't
+ * repainted while scrolling.
+ * Five gradients spread across the viewport so the page never goes
+ * completely flat-dark as the user scrolls. */
 body::before {
   content: "";
   position: fixed;
@@ -43,9 +44,16 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(1200px 700px at 12% -10%, rgba(124, 58, 237, 0.18), transparent 55%),
-    radial-gradient(900px 600px at 90% 8%,    rgba(59, 130, 246, 0.15), transparent 60%),
-    radial-gradient(800px 800px at 50% 100%,  rgba(167, 139, 250, 0.10), transparent 60%);
+    /* top-left violet */
+    radial-gradient(1100px 700px at 10% -8%,  rgba(112, 99, 243, 0.22), transparent 60%),
+    /* top-right cyan */
+    radial-gradient(900px 600px at 92% 6%,   rgba(125, 214, 251, 0.16), transparent 65%),
+    /* mid-left lavender */
+    radial-gradient(900px 700px at 5% 55%,   rgba(155, 139, 244, 0.12), transparent 65%),
+    /* mid-right teal */
+    radial-gradient(900px 700px at 100% 60%, rgba(91, 189, 212, 0.12), transparent 65%),
+    /* bottom-centre warm violet */
+    radial-gradient(1000px 600px at 50% 105%, rgba(112, 99, 243, 0.14), transparent 60%);
 }
 
 img, svg, video {

@@ -71,53 +71,59 @@
 }
 .photo-badge strong { color: #fff; font-weight: 600; }
 
-/* —— Field Operations gallery ——————————————————————————— */
+/* —— Field Operations gallery —————————————————————————————
+ * Clean 3-col × 2-row uniform grid. Every tile is the same size
+ * with a portrait 4:5 aspect ratio — works well for the on-site
+ * vertical photos. No "tall / wide / square" variants, no mosaic
+ * gymnastics.
+ * ——————————————————————————————————————————————————— */
 .field-gallery {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 200px;
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
 }
-@media (max-width: 880px) {
-  .field-gallery { grid-template-columns: repeat(2, 1fr); }
-}
+@media (max-width: 880px) { .field-gallery { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .field-gallery { grid-template-columns: 1fr; } }
 
 .field-tile {
   position: relative;
+  aspect-ratio: 4 / 5;
   border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid var(--c-line-2);
   isolation: isolate;
   background: var(--c-bg-1);
-  transition: transform var(--t-slow) var(--ease-out),
-              box-shadow var(--t-slow) var(--ease-out);
+  transition: transform var(--t-base) var(--ease-out),
+              border-color var(--t-base) var(--ease-out),
+              box-shadow var(--t-base) var(--ease-out);
 }
 .field-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5),
-              0 0 40px rgba(112, 99, 243, 0.18);
+  transform: translateY(-3px);
+  border-color: rgba(155, 139, 244, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45),
+              0 0 36px rgba(112, 99, 243, 0.16);
 }
 .field-tile img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 18%;
-  transition: transform 1.4s var(--ease-out);
+  transition: transform 1.2s var(--ease-out);
 }
-.field-tile:hover img { transform: scale(1.06); }
+.field-tile:hover img { transform: scale(1.05); }
 .field-tile::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(4, 3, 12, 0.85));
+  background: linear-gradient(180deg, transparent 45%, rgba(4, 3, 12, 0.85));
   pointer-events: none;
 }
 .field-tile figcaption {
   position: absolute;
-  left: 18px; right: 18px; bottom: 14px;
+  left: 18px; right: 18px; bottom: 16px;
   z-index: 2;
   color: #fff;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 0.96rem;
+  font-size: 0.98rem;
   letter-spacing: -0.01em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
@@ -127,17 +133,9 @@
   font-weight: 400;
   font-size: 0.72rem;
   color: var(--c-cyan-400);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-/* Asymmetric arrangement — feature shots span more */
-.field-tile--wide   { grid-column: span 3; }
-.field-tile--tall   { grid-row: span 2;  grid-column: span 2; }
-.field-tile--square { grid-column: span 2; }
-@media (max-width: 880px) {
-  .field-tile--wide, .field-tile--tall, .field-tile--square { grid-column: span 1; grid-row: span 1; }
+  margin-bottom: 3px;
 }
 
 /* —— Commercial vs Industrial comparison ————————————————— */

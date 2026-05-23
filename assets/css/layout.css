@@ -6,6 +6,11 @@
 .section {
   position: relative;
   padding: var(--section-py) 0;
+  /* Tell the browser it can skip rendering this section entirely
+   * when it's off-screen — big scroll-perf win on long pages.
+   * Intrinsic size keeps the scrollbar accurate before paint. */
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 .section--tight { padding: calc(var(--section-py) * 0.6) 0; }
 

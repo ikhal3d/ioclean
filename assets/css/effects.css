@@ -7,15 +7,15 @@
 /* —— Reusable glass ———————————————————————————————————— */
 .glass {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
 }
 .glass-strong {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid var(--c-line-2);
   border-radius: var(--r-xl);
 }
@@ -24,7 +24,7 @@
 .glow-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(48px);
   opacity: 0.7;
   pointer-events: none;
   z-index: 0;
@@ -90,7 +90,7 @@
   position: absolute;
   width: 80vw; height: 60vh;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(48px);
   opacity: 0.5;
   animation: aurora-shift 18s ease-in-out infinite alternate;
 }
@@ -289,7 +289,7 @@
   width: min(900px, 80vw);
   height: 320px;
   background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.3), transparent 60%);
-  filter: blur(60px);
+  filter: blur(40px);
   z-index: 0;
   pointer-events: none;
 }

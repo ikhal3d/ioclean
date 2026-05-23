@@ -1,27 +1,29 @@
 /* ============================================================
  * logo.css
  *
- * Animated lotus brand mark.
+ * Animated lotus brand mark — 7 rounded ellipse petals.
  *
  * Markup
  * ------
- *   .lotus              the <svg> root
- *     └── .lotus__body  outer group, gets the gentle float + glow pulse
- *           └── .lotus__petal × 5   each petal is its own <path>
+ *   .lotus
+ *     └── .lotus__body          group, gets group float + glow pulse
+ *           └── .lotus__petal × 7   each petal is an <ellipse>
  *
  * Animation principles
  * --------------------
- *   · Each petal pivots around its own base (transform-box: fill-box
- *     + transform-origin: 50% 100%), so the rotation looks like a
- *     leaf bending at its stem rather than spinning around the centre.
- *   · Every petal has its own keyframe + duration + negative delay so
- *     they always read as out-of-phase, never synchronised.
- *   · Rotation amplitude is intentionally tiny (≈ 2.5°) — looks like
- *     wind, not a wind-up toy.
- *   · The whole flower has a separate 1-px vertical float and a slow
- *     glow pulse, layered on top so the petals' transform stays clean.
- *   · prefers-reduced-motion strips all animation but keeps the static
- *     mark perfectly intact.
+ *   · Each petal is a rounded ellipse (no sharp tip), translucent
+ *     fill, overlapping its neighbours to create the lotus body.
+ *   · Each petal pivots around its own base
+ *     (transform-box: fill-box + transform-origin: 50% 100%), so it
+ *     bends at the stem rather than spinning around the centre.
+ *   · 7 unique sway keyframes (one per petal), each with its own
+ *     base angle so we don't have to compose transforms.
+ *   · Different durations and negative delays keep all 7 petals
+ *     out of phase at all times.
+ *   · Whole flower gets a separate vertical float + glow pulse
+ *     layered on .lotus__body so individual petal transforms stay
+ *     clean.
+ *   · prefers-reduced-motion stops every animation.
  * ============================================================ */
 
 .lotus {
@@ -49,7 +51,7 @@
   50%      { filter: drop-shadow(0 0 11px rgba(125, 214, 251, 0.50)); }
 }
 
-/* —— Petals: each sways independently around its base —— */
+/* —— Petals —— */
 .lotus__petal {
   transform-box: fill-box;
   transform-origin: 50% 100%;
@@ -58,68 +60,72 @@
   will-change: transform;
 }
 
-/* Per-petal sway — each has its own base angle baked into the keyframe
- * so we never have to recompose transforms across multiple rules. */
-
-.lotus__petal--1 { animation-name: sway-1; animation-duration: 7.4s; animation-delay:  0s;    }
-.lotus__petal--2 { animation-name: sway-2; animation-duration: 8.1s; animation-delay: -1.6s;  }
-.lotus__petal--3 { animation-name: sway-3; animation-duration: 6.8s; animation-delay: -2.9s;  }
-.lotus__petal--4 { animation-name: sway-4; animation-duration: 7.7s; animation-delay: -4.2s;  }
-.lotus__petal--5 { animation-name: sway-5; animation-duration: 8.4s; animation-delay: -5.5s;  }
+/* Per-petal sway — each base angle baked into its own keyframe.
+ * Seven petals fanning around a central point at -90°, -60°, -30°,
+ * 0°, +30°, +60°, +90°. */
+.lotus__petal--1 { animation: sway-1 7.4s ease-in-out  0s   infinite; }
+.lotus__petal--2 { animation: sway-2 8.1s ease-in-out -1.2s infinite; }
+.lotus__petal--3 { animation: sway-3 6.8s ease-in-out -2.5s infinite; }
+.lotus__petal--4 { animation: sway-4 7.6s ease-in-out -3.8s infinite; }
+.lotus__petal--5 { animation: sway-5 7.0s ease-in-out -5.0s infinite; }
+.lotus__petal--6 { animation: sway-6 8.4s ease-in-out -6.2s infinite; }
+.lotus__petal--7 { animation: sway-7 7.2s ease-in-out -7.4s infinite; }
 
 @keyframes sway-1 {
-  0%, 100% { transform: rotate(-70deg); }
-  50%      { transform: rotate(-67.5deg); }
+  0%, 100% { transform: rotate(-90deg); }
+  50%      { transform: rotate(-87deg); }
 }
 @keyframes sway-2 {
-  0%, 100% { transform: rotate(-36deg); }
-  50%      { transform: rotate(-33deg); }
+  0%, 100% { transform: rotate(-60deg); }
+  50%      { transform: rotate(-57deg); }
 }
 @keyframes sway-3 {
+  0%, 100% { transform: rotate(-30deg); }
+  50%      { transform: rotate(-27deg); }
+}
+@keyframes sway-4 {
   0%, 100% { transform: rotate(0deg); }
   50%      { transform: rotate(2.5deg); }
 }
-@keyframes sway-4 {
-  0%, 100% { transform: rotate(36deg); }
-  50%      { transform: rotate(38.5deg); }
-}
 @keyframes sway-5 {
-  0%, 100% { transform: rotate(70deg); }
-  50%      { transform: rotate(72.5deg); }
+  0%, 100% { transform: rotate(30deg); }
+  50%      { transform: rotate(32.5deg); }
 }
-
-/* —— Brand-mark sizing tweak so the SVG sits where the PNG used to —— */
-.brand__mark .lotus { width: 40px; height: 40px; }
+@keyframes sway-6 {
+  0%, 100% { transform: rotate(60deg); }
+  50%      { transform: rotate(63deg); }
+}
+@keyframes sway-7 {
+  0%, 100% { transform: rotate(90deg); }
+  50%      { transform: rotate(93deg); }
+}
 
 /* ============================================================
  * Hero-scale lotus — the marquee version
- * Large, glowing, swaying lotus that replaces the team photo
- * in the landing-page hero. Same SVG markup as the brand mark,
- * just bigger + a soft ambient backdrop.
  * ============================================================ */
 
 .hero__lotus {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 540px;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   display: grid; place-items: center;
   isolation: isolate;
 }
 
-/* Soft glow halo behind the flower (slow breathing) */
 .hero__lotus__glow {
   position: absolute;
   inset: 8%;
   z-index: -1;
   border-radius: 50%;
   background:
-    radial-gradient(closest-side, rgba(112, 99, 243, 0.45), transparent 60%),
-    radial-gradient(closest-side, rgba(125, 214, 251, 0.25), transparent 70%);
-  filter: blur(50px);
+    radial-gradient(closest-side, rgba(112, 99, 243, 0.40), transparent 60%),
+    radial-gradient(closest-side, rgba(125, 214, 251, 0.22), transparent 72%);
+  filter: blur(40px);
   animation: hero-lotus-glow 9s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 @keyframes hero-lotus-glow {
   0%, 100% { transform: scale(1);     opacity: 0.85; }
@@ -127,67 +133,48 @@
 }
 
 .lotus--hero {
-  width: 88%;
-  height: 88%;
-  /* Bigger drop-shadow at hero scale, otherwise the glow on the
-     brand mark would be lost. */
-  filter: drop-shadow(0 16px 40px rgba(112, 99, 243, 0.30));
+  width: 92%;
+  height: 92%;
 }
 
-/* At hero scale, slightly amplify the per-petal sway so the motion
-   reads from across the page — but keep it well shy of "swinging".
-   Translation lives on .lotus__body (group float) so the petals stay
-   visually attached to the base. */
+/* Amplified per-petal sway at hero scale */
 .lotus--hero .lotus__petal--1 { animation-name: hero-sway-1; }
 .lotus--hero .lotus__petal--2 { animation-name: hero-sway-2; }
 .lotus--hero .lotus__petal--3 { animation-name: hero-sway-3; }
 .lotus--hero .lotus__petal--4 { animation-name: hero-sway-4; }
 .lotus--hero .lotus__petal--5 { animation-name: hero-sway-5; }
+.lotus--hero .lotus__petal--6 { animation-name: hero-sway-6; }
+.lotus--hero .lotus__petal--7 { animation-name: hero-sway-7; }
 
-@keyframes hero-sway-1 {
-  0%, 100% { transform: rotate(-70deg); }
-  50%      { transform: rotate(-65deg); }
-}
-@keyframes hero-sway-2 {
-  0%, 100% { transform: rotate(-36deg); }
-  50%      { transform: rotate(-31deg); }
-}
-@keyframes hero-sway-3 {
-  0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(4deg); }
-}
-@keyframes hero-sway-4 {
-  0%, 100% { transform: rotate(36deg); }
-  50%      { transform: rotate(41deg); }
-}
-@keyframes hero-sway-5 {
-  0%, 100% { transform: rotate(70deg); }
-  50%      { transform: rotate(75deg); }
-}
+@keyframes hero-sway-1 { 0%,100%{transform:rotate(-90deg);} 50%{transform:rotate(-85deg);} }
+@keyframes hero-sway-2 { 0%,100%{transform:rotate(-60deg);} 50%{transform:rotate(-55deg);} }
+@keyframes hero-sway-3 { 0%,100%{transform:rotate(-30deg);} 50%{transform:rotate(-25deg);} }
+@keyframes hero-sway-4 { 0%,100%{transform:rotate(0deg);}   50%{transform:rotate(4deg);}   }
+@keyframes hero-sway-5 { 0%,100%{transform:rotate(30deg);}  50%{transform:rotate(34deg);}  }
+@keyframes hero-sway-6 { 0%,100%{transform:rotate(60deg);}  50%{transform:rotate(64deg);}  }
+@keyframes hero-sway-7 { 0%,100%{transform:rotate(90deg);}  50%{transform:rotate(94deg);}  }
 
 /* Bigger body float + warmer glow at hero scale */
 .lotus--hero .lotus__body {
   animation:
-    hero-lotus-float       8s  ease-in-out infinite,
-    hero-lotus-glow-filter 6s  ease-in-out infinite;
+    hero-lotus-float       8s ease-in-out infinite,
+    hero-lotus-glow-filter 6s ease-in-out infinite;
 }
 @keyframes hero-lotus-float {
   0%, 100% { transform: translate(50px, 60px); }
   50%      { transform: translate(50px, 57px); }
 }
 @keyframes hero-lotus-glow-filter {
-  0%, 100% { filter: drop-shadow(0 0 8px  rgba(112, 99, 243, 0.35)); }
-  50%      { filter: drop-shadow(0 0 24px rgba(125, 214, 251, 0.55)); }
+  0%, 100% { filter: drop-shadow(0 0 6px  rgba(112, 99, 243, 0.30)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(125, 214, 251, 0.45)); }
 }
 
-/* Reduced-motion guard for the hero-scale version too */
-@media (prefers-reduced-motion: reduce) {
-  .hero__lotus__glow { animation: none; }
-}
-
-/* —— Reduced-motion fallback: static logo, glow stays on quietly —— */
+/* ============================================================
+ * Reduced-motion: kill all animation, keep static lotus visible
+ * ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .lotus__body,
-  .lotus__petal { animation: none; }
-  .lotus__body  { transform: translate(50px, 60px); filter: drop-shadow(0 0 4px rgba(112, 99, 243, 0.35)); }
+  .lotus__petal,
+  .hero__lotus__glow { animation: none; }
+  .lotus__body { transform: translate(50px, 60px); filter: drop-shadow(0 0 4px rgba(112, 99, 243, 0.35)); }
 }

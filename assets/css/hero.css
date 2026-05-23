@@ -140,7 +140,7 @@
   inset: -20%;
   border-radius: 50%;
   background: radial-gradient(closest-side, rgba(139, 92, 246, 0.32), transparent 70%);
-  filter: blur(50px);
+  filter: blur(38px);
   z-index: -1;
   animation: blob-drift 22s ease-in-out infinite;
   pointer-events: none;
