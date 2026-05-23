@@ -3,12 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <script>
-    /* /index.html and / are the same document on GitHub Pages.
-       location.replace() triggers an actual navigation so search
-       engines see it as a redirect to the canonical /.  The page
-       fetched at / runs this same script, but pathname is now '/'
-       so it's a no-op — no infinite loop. */
+    /* /index.html and / are the same document on GitHub Pages, so when a
+       crawler or visitor hits /index.html we need to:
+         1. Tell the crawler not to index this duplicate URL,
+         2. Redirect to the canonical / via real client navigation.
+       When the page is reached at /, this block is a no-op — the page
+       indexes normally and serves as the homepage. */
     if (location.pathname === '/index.html') {
+      var m = document.querySelector('meta[name="robots"]');
+      if (m) {
+        m.setAttribute('content', 'noindex, follow');
+      } else {
+        m = document.createElement('meta');
+        m.name = 'robots';
+        m.content = 'noindex, follow';
+        document.head.appendChild(m);
+      }
       location.replace('/' + location.search + location.hash);
     }
   </script>
