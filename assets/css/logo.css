@@ -91,6 +91,100 @@
 /* —— Brand-mark sizing tweak so the SVG sits where the PNG used to —— */
 .brand__mark .lotus { width: 40px; height: 40px; }
 
+/* ============================================================
+ * Hero-scale lotus — the marquee version
+ * Large, glowing, swaying lotus that replaces the team photo
+ * in the landing-page hero. Same SVG markup as the brand mark,
+ * just bigger + a soft ambient backdrop.
+ * ============================================================ */
+
+.hero__lotus {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  display: grid; place-items: center;
+  isolation: isolate;
+}
+
+/* Soft glow halo behind the flower (slow breathing) */
+.hero__lotus__glow {
+  position: absolute;
+  inset: 8%;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(112, 99, 243, 0.45), transparent 60%),
+    radial-gradient(closest-side, rgba(125, 214, 251, 0.25), transparent 70%);
+  filter: blur(50px);
+  animation: hero-lotus-glow 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes hero-lotus-glow {
+  0%, 100% { transform: scale(1);     opacity: 0.85; }
+  50%      { transform: scale(1.06);  opacity: 1;    }
+}
+
+.lotus--hero {
+  width: 88%;
+  height: 88%;
+  /* Bigger drop-shadow at hero scale, otherwise the glow on the
+     brand mark would be lost. */
+  filter: drop-shadow(0 16px 40px rgba(112, 99, 243, 0.30));
+}
+
+/* At hero scale, slightly amplify the per-petal sway so the motion
+   reads from across the page — but keep it well shy of "swinging".
+   Translation lives on .lotus__body (group float) so the petals stay
+   visually attached to the base. */
+.lotus--hero .lotus__petal--1 { animation-name: hero-sway-1; }
+.lotus--hero .lotus__petal--2 { animation-name: hero-sway-2; }
+.lotus--hero .lotus__petal--3 { animation-name: hero-sway-3; }
+.lotus--hero .lotus__petal--4 { animation-name: hero-sway-4; }
+.lotus--hero .lotus__petal--5 { animation-name: hero-sway-5; }
+
+@keyframes hero-sway-1 {
+  0%, 100% { transform: rotate(-70deg); }
+  50%      { transform: rotate(-65deg); }
+}
+@keyframes hero-sway-2 {
+  0%, 100% { transform: rotate(-36deg); }
+  50%      { transform: rotate(-31deg); }
+}
+@keyframes hero-sway-3 {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(4deg); }
+}
+@keyframes hero-sway-4 {
+  0%, 100% { transform: rotate(36deg); }
+  50%      { transform: rotate(41deg); }
+}
+@keyframes hero-sway-5 {
+  0%, 100% { transform: rotate(70deg); }
+  50%      { transform: rotate(75deg); }
+}
+
+/* Bigger body float + warmer glow at hero scale */
+.lotus--hero .lotus__body {
+  animation:
+    hero-lotus-float       8s  ease-in-out infinite,
+    hero-lotus-glow-filter 6s  ease-in-out infinite;
+}
+@keyframes hero-lotus-float {
+  0%, 100% { transform: translate(50px, 60px); }
+  50%      { transform: translate(50px, 57px); }
+}
+@keyframes hero-lotus-glow-filter {
+  0%, 100% { filter: drop-shadow(0 0 8px  rgba(112, 99, 243, 0.35)); }
+  50%      { filter: drop-shadow(0 0 24px rgba(125, 214, 251, 0.55)); }
+}
+
+/* Reduced-motion guard for the hero-scale version too */
+@media (prefers-reduced-motion: reduce) {
+  .hero__lotus__glow { animation: none; }
+}
+
 /* —— Reduced-motion fallback: static logo, glow stays on quietly —— */
 @media (prefers-reduced-motion: reduce) {
   .lotus__body,
