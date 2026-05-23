@@ -55,14 +55,24 @@ body::before {
    * Painted over the dark navy fallback on <html> at every scroll
    * position, so the page reads as the brand palette top-to-bottom
    * instead of going flat-dark below the hero. */
-  /* Dark navy fills the viewport; brand colour is added as soft
-   * corner blooms only — no full-page wash, so cards and text
-   * keep their contrast. */
+  /* Concentrated radial blooms — same logic as the hero's
+   * .glow-blob elements (saturated, large, soft-edged), just on
+   * a fixed-position layer so they frame the page with brand
+   * colour at every scroll position. Stays away from a full-page
+   * wash so cards and text keep their contrast where they sit. */
   background:
-    radial-gradient(900px 600px at 8% -8%,    rgba(112, 99, 243, 0.22), transparent 60%),
-    radial-gradient(800px 500px at 96% 6%,    rgba(125, 214, 251, 0.14), transparent 60%),
-    radial-gradient(800px 600px at -4% 95%,   rgba(91, 120, 230, 0.14), transparent 60%),
-    radial-gradient(900px 600px at 104% 96%,  rgba(91, 189, 212, 0.14), transparent 60%),
+    /* top-left violet bloom — matches the hero exactly */
+    radial-gradient(1100px 700px at 5% -10%,  rgba(112, 99, 243, 0.50), transparent 55%),
+    /* top-right cyan bloom */
+    radial-gradient(1000px 600px at 100% 0%,  rgba(125, 214, 251, 0.32), transparent 60%),
+    /* mid-left lavender drift */
+    radial-gradient(900px 600px at -8% 45%,   rgba(155, 139, 244, 0.26), transparent 60%),
+    /* mid-right teal drift */
+    radial-gradient(900px 600px at 108% 55%,  rgba(91, 189, 212, 0.24), transparent 60%),
+    /* lower-left mid-blue bloom */
+    radial-gradient(1000px 700px at -6% 105%, rgba(91, 120, 230, 0.36), transparent 60%),
+    /* lower-right violet bloom */
+    radial-gradient(1000px 700px at 106% 102%,rgba(112, 99, 243, 0.34), transparent 60%),
     var(--c-bg-0);
 }
 
