@@ -110,9 +110,21 @@
   transition: transform 1.2s var(--ease-out);
 }
 .field-tile:hover img { transform: scale(1.05); }
+/* Cool brand-blue color cast over the photo (keeps luminance, just
+ * shifts hue + saturation toward the brand palette). */
+.field-tile::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+/* Bottom caption shade — sits on top of the colour cast */
 .field-tile::after {
   content: "";
   position: absolute; inset: 0;
+  z-index: 2;
   background: linear-gradient(180deg, transparent 45%, rgba(4, 3, 12, 0.85));
   pointer-events: none;
 }
@@ -173,9 +185,19 @@
   transition: transform 1.4s var(--ease-out);
 }
 .compare__card:hover .compare__photo img { transform: scale(1.05); }
+/* Cool brand-blue colour cast over the photo */
+.compare__photo::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
 .compare__photo::after {
   content: "";
   position: absolute; inset: 0;
+  z-index: 2;
   background: linear-gradient(180deg, transparent 40%, rgba(4, 3, 12, 0.75) 100%);
   pointer-events: none;
 }
@@ -281,9 +303,19 @@
   transition: transform 9s var(--ease-out);
 }
 .about-photo:hover img { transform: scale(1.04); }
+/* Cool brand-blue colour cast over the photo */
+.about-photo::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.55), rgba(91, 120, 230, 0.55));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
 .about-photo::after {
   content: "";
   position: absolute; inset: 0;
+  z-index: 2;
   background: linear-gradient(180deg, transparent 60%, rgba(4, 3, 12, 0.4) 100%);
   pointer-events: none;
 }
