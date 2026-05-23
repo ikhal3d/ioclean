@@ -1,10 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-  <!-- Outer ripple ring (faintest) -->
-  <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="0.8" opacity="0.32"/>
-  <!-- Middle ripple ring -->
-  <circle cx="16" cy="16" r="9.5" stroke="currentColor" stroke-width="0.9" opacity="0.55"/>
-  <!-- Central drop -->
-  <circle cx="16" cy="16" r="5.5" fill="currentColor"/>
-  <!-- Specular highlight -->
-  <circle cx="14.4" cy="14.4" r="1.5" fill="rgba(255,255,255,0.45)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+  <!-- ioclean lotus — eight translucent petals fanning around a central point.
+       Colors pulled from the brand palette (violet/lavender/mid-blue/teal/cyan).
+       Stacking alpha creates the darker overlap regions characteristic of the
+       brand mark. -->
+  <g transform="translate(50 52)">
+    <!-- Each petal: a teardrop path pointing up, then rotated around (0,0). -->
+    <g fill-opacity="0.78">
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#7DD6FB" transform="rotate(0)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#9B8BF4" transform="rotate(-45)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#5B78E6" transform="rotate(45)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#7063F3" transform="rotate(-80)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#5BBDD4" transform="rotate(80)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#6D28D9" transform="rotate(-118)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#7DD6FB" transform="rotate(118)"/>
+      <path d="M 0 0 Q -10 -22 0 -42 Q 10 -22 0 0 Z" fill="#4338CA" transform="rotate(180)"/>
+    </g>
+  </g>
 </svg>

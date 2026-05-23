@@ -1,20 +1,27 @@
 /* ============================================================
- * tokens.css
- * Design tokens — the single source of truth for colors,
- * typography, spacing, radius, shadows, and motion curves.
- * Every other CSS file pulls from these custom properties.
+ * tokens.css — ioclean brand (official palette)
+ *
+ * Sourced from the brand kit:
+ *   Deep Navy  #04030C  — primary dark (60–70% dominance)
+ *   Violet     #7063F3  — primary accent
+ *   Cyan       #7DD6FB  — primary light
+ *   Lavender   #9B8BF4  — secondary
+ *   Mid Blue   #5B78E6  — secondary
+ *   Teal       #5BBDD4  — secondary
+ *
+ * On dark backgrounds, white for body text + cyan/violet for highlights.
  * ============================================================ */
 
 :root {
-  /* —— Surfaces ———————————————————————————————————————————— */
-  --c-bg-0:        #04030c;  /* deepest, page base */
-  --c-bg-1:        #07061a;  /* card surface */
-  --c-bg-2:        #0c0a25;  /* elevated surface */
-  --c-bg-3:        #100d2e;  /* highest elevation */
+  /* —— Surfaces (Deep Navy + elevated tones) ——————————— */
+  --c-bg-0:        #04030c;
+  --c-bg-1:        #0a0820;
+  --c-bg-2:        #100e30;
+  --c-bg-3:        #181542;
 
   /* —— Ink ———————————————————————————————————————————————— */
   --c-ink-0:       #ffffff;
-  --c-ink-1:       #e6e2f7;
+  --c-ink-1:       #e8e3ff;
   --c-ink-2:       #a39db8;
   --c-ink-3:       #6b6585;
   --c-ink-4:       #3f3a55;
@@ -24,34 +31,46 @@
   --c-line-2:      rgba(255, 255, 255, 0.14);
   --c-line-3:      rgba(255, 255, 255, 0.22);
 
-  /* —— Brand palette ——————————————————————————————————————
-   * Anchors: electric violet → indigo → blue, with magenta accent
-   * Used as raw values; gradients composed below.
-   * ———————————————————————————————————————————————————— */
-  --c-violet-50:   #ede9fe;
-  --c-violet-200:  #c4b5fd;
-  --c-violet-400:  #a78bfa;
-  --c-violet-500:  #8b5cf6;
-  --c-violet-600:  #7c3aed;
-  --c-violet-700:  #6d28d9;
+  /* —— Brand palette (raw) ——————————————————————————————— */
+  --c-violet:      #7063F3;   /* primary accent */
+  --c-violet-200:  #c4bef9;
+  --c-violet-400:  #9b8bf4;   /* lavender (secondary) */
+  --c-violet-500:  #7063F3;   /* alias of primary */
+  --c-violet-600:  #5849d6;
+  --c-violet-700:  #4338b0;
 
-  --c-indigo-400:  #818cf8;
-  --c-indigo-500:  #6366f1;
-  --c-indigo-600:  #4f46e5;
+  --c-cyan:        #7DD6FB;   /* primary light */
+  --c-cyan-200:    #bee8fd;
+  --c-cyan-400:    #7DD6FB;
+  --c-cyan-500:    #38b7e6;
 
-  --c-blue-400:    #60a5fa;
-  --c-blue-500:    #3b82f6;
-  --c-blue-600:    #2563eb;
+  --c-blue:        #5B78E6;   /* mid blue (secondary) */
+  --c-blue-400:    #8aa3ee;
+  --c-blue-500:    #5B78E6;
+  --c-blue-600:    #3f57c4;
 
-  --c-cyan-400:    #22d3ee;
-  --c-magenta-500: #d946ef;
+  --c-teal:        #5BBDD4;   /* teal (secondary) */
+  --c-teal-400:    #5BBDD4;
+  --c-teal-500:    #2b96b1;
 
-  /* —— Composed gradients ———————————————————————————————— */
-  --g-primary:     linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%);
-  --g-primary-hot: linear-gradient(135deg, #c4b5fd 0%, #6366f1 45%, #60a5fa 100%);
-  --g-accent:      linear-gradient(135deg, #d946ef 0%, #8b5cf6 50%, #3b82f6 100%);
-  --g-text:        linear-gradient(120deg, #ffffff 0%, #c4b5fd 45%, #93c5fd 100%);
-  --g-text-hot:    linear-gradient(120deg, #ffffff 0%, #e9d5ff 30%, #93c5fd 65%, #67e8f9 100%);
+  /* Legacy aliases used widely in the codebase — keep them mapped
+     to the new palette so existing rules stay correct. */
+  --c-indigo-400:  #8aa3ee;
+  --c-indigo-500:  #5B78E6;
+  --c-indigo-600:  #4338b0;
+  --c-pink-500:    #9b8bf4;
+  --c-pink-400:    #c4bef9;
+  --c-magenta-500: #7063F3;
+  --c-amber-400:   #7DD6FB;
+  --c-amber-500:   #5BBDD4;
+  --c-amber-300:   #bee8fd;
+
+  /* —— Composed gradients (built from the brand palette) ——— */
+  --g-primary:     linear-gradient(135deg, #9b8bf4 0%, #7063f3 50%, #5b78e6 100%);
+  --g-primary-hot: linear-gradient(135deg, #c4bef9 0%, #7063f3 45%, #7DD6FB 100%);
+  --g-accent:      linear-gradient(135deg, #7DD6FB 0%, #7063F3 50%, #5B78E6 100%);
+  --g-text:        linear-gradient(120deg, #ffffff 0%, #c4bef9 45%, #7DD6FB 100%);
+  --g-text-hot:    linear-gradient(120deg, #ffffff 0%, #9b8bf4 30%, #7063f3 65%, #7DD6FB 100%);
   --g-line:        linear-gradient(90deg, transparent, var(--c-line-2), transparent);
   --g-line-hot:    linear-gradient(90deg, transparent, var(--c-violet-400), transparent);
 
@@ -60,14 +79,14 @@
                    0 30px 80px rgba(0, 0, 0, 0.5),
                    0 2px 6px rgba(0, 0, 0, 0.4);
   --shadow-card-1: 0 30px 80px rgba(0, 0, 0, 0.55),
-                   0 0 60px rgba(139, 92, 246, 0.18);
+                   0 0 60px rgba(112, 99, 243, 0.20);
   --shadow-pop:    0 18px 50px rgba(0, 0, 0, 0.45);
-  --shadow-glow-v: 0 0 60px rgba(139, 92, 246, 0.45);
-  --shadow-glow-b: 0 0 60px rgba(59, 130, 246, 0.4);
-  --shadow-btn:    0 10px 30px rgba(99, 102, 241, 0.45),
+  --shadow-glow-v: 0 0 60px rgba(112, 99, 243, 0.45);
+  --shadow-glow-b: 0 0 60px rgba(125, 214, 251, 0.4);
+  --shadow-btn:    0 10px 30px rgba(112, 99, 243, 0.45),
                    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
                    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  --shadow-btn-h:  0 18px 44px rgba(139, 92, 246, 0.55),
+  --shadow-btn-h:  0 18px 44px rgba(112, 99, 243, 0.55),
                    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
                    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
@@ -110,7 +129,7 @@
   --fs-4xl:  clamp(2.4rem, 5vw, 3.8rem);
   --fs-5xl:  clamp(2.6rem, 6.2vw, 5.2rem);
 
-  /* —— Motion — bezier curves and durations ————————————— */
+  /* —— Motion ——————————————————————————————————————————— */
   --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
   --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -127,15 +146,8 @@
   --section-py:   clamp(72px, 9vw, 112px);
 }
 
-/* @property declarations enable animation of custom gradient angles */
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
-  inherits: false;
-}
-
-@property --hue {
-  syntax: '<number>';
-  initial-value: 265;
   inherits: false;
 }
