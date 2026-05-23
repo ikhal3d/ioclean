@@ -2,14 +2,22 @@
 <html lang="en-AU">
 <head>
   <meta charset="utf-8" />
+  <script>
+    /* /index.html and / serve the same content. Rewrite the URL bar
+       to / so the canonical and the displayed URL match. */
+    if (location.pathname === '/index.html') {
+      history.replaceState(null, '', '/' + location.search + location.hash);
+    }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
   <title>ioclean — Melbourne's premium commercial cleaning partner</title>
   <meta name="description" content="Commercial, industrial and specialist cleaning across Melbourne. Police-checked teams, eco-grade products, anti-viral protocols, 24/7 availability. Quotes in 24 hours." />
   <meta name="theme-color" content="#04030c" />
 
-  <link rel="icon" type="image/svg+xml" href="assets/img/brand/favicon.svg" />
-  <link rel="apple-touch-icon" href="assets/img/brand/favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/img/brand/logo.png" />
+  <link rel="apple-touch-icon" href="assets/img/brand/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Canonical & search-engine hints -->
@@ -151,7 +159,7 @@
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="/" aria-label="ioclean home">
         <span class="brand__mark" aria-hidden="true">
-          <img src="assets/img/brand/logo-mark.svg" alt="" width="32" height="32" />
+          <img src="assets/img/brand/logo.png" alt="ioclean" width="36" height="36" />
         </span>
         <span class="brand__text">ioclean<span class="dot">.</span></span>
       </a>
@@ -995,7 +1003,7 @@
         <div class="footer__brandcol">
           <a class="brand" href="/">
             <span class="brand__mark" aria-hidden="true">
-              <img src="assets/img/brand/logo-mark.svg" alt="" width="32" height="32" />
+              <img src="assets/img/brand/logo.png" alt="ioclean" width="36" height="36" />
             </span>
             <span class="brand__text">ioclean<span class="dot">.</span></span>
           </a>
@@ -1041,7 +1049,7 @@
 
       <div class="footer__bottom">
         <div>© <span data-year>2026</span> ioclean · Melbourne</div>
-        <div>Made in Melbourne · <a href="#">Privacy</a> · <a href="#">Terms</a></div>
+        <div>Made in Melbourne · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
       </div>
 
       <div class="footer__legal">
