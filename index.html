@@ -265,16 +265,27 @@
             <div class="hero__lotus__glow"></div>
             <svg class="lotus lotus--hero" viewBox="0 0 100 100" role="img" aria-label="ioclean">
               <g class="lotus__body">
-                <!-- 7 rounded ellipse petals, ordered left → right.
-                     Each pivots at its own base (transform-origin: 50% 100%)
-                     and sways through its own keyframe (sway-1 … sway-7). -->
-                <ellipse class="lotus__petal lotus__petal--1" cx="0" cy="-22" rx="9"  ry="22" fill="#6D28D9" fill-opacity="0.72" />
-                <ellipse class="lotus__petal lotus__petal--2" cx="0" cy="-25" rx="10" ry="25" fill="#7063F3" fill-opacity="0.74" />
-                <ellipse class="lotus__petal lotus__petal--3" cx="0" cy="-26" rx="10" ry="26" fill="#9B8BF4" fill-opacity="0.76" />
-                <ellipse class="lotus__petal lotus__petal--4" cx="0" cy="-28" rx="10" ry="28" fill="#7DD6FB" fill-opacity="0.80" />
-                <ellipse class="lotus__petal lotus__petal--5" cx="0" cy="-26" rx="10" ry="26" fill="#5B78E6" fill-opacity="0.76" />
-                <ellipse class="lotus__petal lotus__petal--6" cx="0" cy="-25" rx="10" ry="25" fill="#5BBDD4" fill-opacity="0.74" />
-                <ellipse class="lotus__petal lotus__petal--7" cx="0" cy="-22" rx="9"  ry="22" fill="#7DD6FB" fill-opacity="0.72" />
+                <!-- 7 leaf-shaped petals fanning around a shared base point.
+                     Each petal is a tapered almond drawn from base (0,0)
+                     up to tip (0,-52), with both ends pointed and the
+                     widest cross-section near the middle. Pivot at the
+                     base (transform-box: fill-box; origin: 50% 100%).
+
+                     Angles (from .lotus__petal--N sway keyframes):
+                       1 → -115°  bottom-left   deep purple
+                       2 →  -75°  left           violet
+                       3 →  -35°  upper-left     lavender
+                       4 →    0°  top apex       cyan
+                       5 →  +35°  upper-right    mid blue
+                       6 →  +75°  right          teal
+                       7 → +115°  bottom-right   light cyan -->
+                <path class="lotus__petal lotus__petal--1" fill="#6D28D9" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--2" fill="#7063F3" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--3" fill="#9B8BF4" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--4" fill="#7DD6FB" fill-opacity="0.82" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--5" fill="#5B78E6" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--6" fill="#5BBDD4" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
+                <path class="lotus__petal lotus__petal--7" fill="#7DD6FB" fill-opacity="0.78" d="M 0 0 C -8 -6 -13 -22 -12 -34 Q -7 -49 0 -52 Q 7 -49 12 -34 C 13 -22 8 -6 0 0 Z" />
               </g>
             </svg>
           </div>
