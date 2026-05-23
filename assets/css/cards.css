@@ -86,10 +86,10 @@ a.card {
   width: 54px; height: 54px;
   border-radius: 14px;
   display: grid; place-items: center;
-  background: linear-gradient(135deg, rgba(155, 139, 244, 0.45), rgba(112, 99, 243, 0.35));
-  border: 1px solid rgba(155, 139, 244, 0.55);
-  color: var(--c-violet-200);
-  box-shadow: 0 0 22px rgba(112, 99, 243, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(112, 99, 243, 0.85), rgba(88, 73, 214, 0.75));
+  border: 1px solid rgba(112, 99, 243, 0.9);
+  color: #fff;
+  box-shadow: 0 0 26px rgba(112, 99, 243, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition:
     transform 540ms var(--ease-out),
     box-shadow var(--t-slow) var(--ease-out),

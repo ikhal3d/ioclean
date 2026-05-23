@@ -228,6 +228,18 @@
   display: flex; flex-wrap: wrap; gap: var(--s-3);
 }
 
+/* Override the default 1fr/1fr .split inside CTA banners — the equal
+ * columns leave a big gap between the title and the buttons. Give the
+ * title its natural width and let the buttons sit right after it. */
+.cta-banner .split {
+  grid-template-columns: 1fr auto;
+  gap: var(--s-7);
+}
+.cta-banner .cta-banner__actions { margin-top: 0; }
+@media (max-width: 880px) {
+  .cta-banner .split { grid-template-columns: 1fr; }
+}
+
 /* —— Forms ——————————————————————————————————————————— */
 .form-grid {
   display: grid;
