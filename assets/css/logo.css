@@ -90,42 +90,70 @@
  *   .beam-divider__lotus tiny mark in the section dividers (44 px)
  * Each shares the same sway/float/glow animations defined above. */
 
-/* Base subhero lotus — sits inside the container's right edge by
- * default. Each page picks a placement variant so the brand mark
- * shows up in a different spot rather than always top-right. */
+/* Base subhero lotus — sits adjacent to the centered content block.
+ * The subhero text column is max-width 760px and centered, so we anchor
+ * the lotus relative to viewport-centre using calc(), with a fallback
+ * so it never escapes off-screen on narrow viewports. */
 .subhero__lotus {
   position: absolute;
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   z-index: 1;
   pointer-events: none;
   opacity: 0.85;
   filter: drop-shadow(0 0 28px rgba(112, 99, 243, 0.35));
 }
 
-/* Variants — keep the lotus close to the content rather than the page
- * edge by anchoring against the container's centre with offsets. */
-.subhero__lotus--right { top: 50%; right: 8%;  transform: translateY(-50%); }
-.subhero__lotus--left  { top: 50%; left:  8%;  transform: translateY(-50%); }
-.subhero__lotus--br    { bottom: -40px; right: 14%; }
-.subhero__lotus--bl    { bottom: -40px; left:  14%; }
-.subhero__lotus--tl    { top: 14%; left: 6%;   transform: translateY(0); }
+/* Smaller variant — used on pages where the lotus should sit beside
+ * shorter heading copy without overpowering it (e.g. Contact). */
+.subhero__lotus--sm { width: 150px; height: 150px; }
+
+/* Variants — calc() anchors the lotus just past the edge of the 760px
+ * centred content column (380px half-width + breathing gap). Vertical
+ * anchor is the heading row, not the section centre, so the lotus
+ * reads as "level with the title" rather than floating mid-section. */
+.subhero__lotus--right {
+  top: calc(var(--nav-h) + 70px);
+  right: max(20px, calc(50% - 600px));
+  transform: none;
+}
+.subhero__lotus--left {
+  top: calc(var(--nav-h) + 70px);
+  left: max(20px, calc(50% - 600px));
+  transform: none;
+}
+.subhero__lotus--br {
+  bottom: -30px;
+  right: max(20px, calc(50% - 520px));
+}
+.subhero__lotus--bl {
+  bottom: -30px;
+  left: max(20px, calc(50% - 520px));
+}
+.subhero__lotus--tl {
+  top: calc(var(--nav-h) + 24px);
+  left: max(20px, calc(50% - 540px));
+}
 
 @media (max-width: 880px) {
   .subhero__lotus { display: none; }
 }
 
+/* Lives in the top-right corner of the banner as a small watermark.
+ * Was previously vertically centred which placed it directly behind
+ * the Call/CTA buttons. The buttons are bottom-right of the .split,
+ * so a tucked top-right placement keeps the brand mark visible
+ * without ever sitting under interactive elements. */
 .cta-banner__lotus {
   position: absolute;
-  top: 50%;
-  right: 36px;
-  transform: translateY(-50%);
-  width: 140px;
-  height: 140px;
+  top: 18px;
+  right: 22px;
+  width: 64px;
+  height: 64px;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.6;
-  filter: drop-shadow(0 0 18px rgba(112, 99, 243, 0.4));
+  opacity: 0.55;
+  filter: drop-shadow(0 0 14px rgba(112, 99, 243, 0.45));
 }
 @media (max-width: 880px) {
   .cta-banner__lotus { display: none; }

@@ -105,6 +105,21 @@
   color: var(--c-violet-200);
   filter: drop-shadow(0 0 10px rgba(112, 99, 243, 0.55));
 }
+.trust-strip__tag > span {
+  display: inline-block;
+  min-width: 0;
+}
+
+/* Centered variant: items hug the middle of the section instead of
+ * stretching across an equal-column grid. Useful when there are only
+ * 2–3 perks and the trailing empty grid cells look like a layout bug. */
+.trust-strip--centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s-5) var(--s-8);
+}
+.trust-strip--centered .trust-strip__tag { justify-content: center; }
 
 /* —— Check list (used in About and packages) ————————— */
 .check-list {

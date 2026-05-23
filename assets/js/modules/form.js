@@ -17,9 +17,9 @@ async function handleSubmit(form) {
   data.append('_template', 'table');
   data.append('_captcha',  'false');
   data.append('_autoresponse',
-    "Thanks for reaching out to ioclean — we've received your quote " +
+    "Thanks for reaching out to ioclean. We've received your quote " +
     "request and will be back to you within one business day. " +
-    "For anything urgent, call (03) 0000 0000.");
+    "For anything urgent, reply to this email and we'll prioritise it.");
 
   try {
     const res = await fetch(ENDPOINT, {

@@ -53,37 +53,66 @@
   flex-wrap: wrap;
 }
 
+/* Hero trust pill — single clickable card linking through to the About
+ * page's clearances section. Replaces the older decorative avatars +
+ * trust-line, which read as a UI control but didn't go anywhere. */
 .hero__trust {
   margin-top: var(--s-8);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--s-6);
-  color: var(--c-ink-3);
-  font-size: 0.86rem;
-}
-.hero__trust__divider {
-  width: 1px; height: 18px; background: var(--c-line-2);
-}
-.hero__trust strong {
-  color: var(--c-ink-0);
-  font-weight: 500;
-}
-.hero__avatars {
   display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px 12px 14px;
+  border-radius: var(--r-pill);
+  background:
+    linear-gradient(180deg, rgba(155, 139, 244, 0.10), rgba(112, 99, 243, 0.04)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(155, 139, 244, 0.28);
+  color: var(--c-ink-1);
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(112, 99, 243, 0.10);
+  transition: border-color var(--t-base) var(--ease-out),
+              transform   var(--t-base) var(--ease-out),
+              box-shadow  var(--t-base) var(--ease-out);
 }
-.hero__avatars span {
-  width: 28px; height: 28px;
+.hero__trust:hover {
+  border-color: rgba(155, 139, 244, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(112, 99, 243, 0.22);
+}
+.hero__trust__icon {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
   border-radius: 50%;
-  background: var(--g-primary);
-  border: 2px solid var(--c-bg-0);
-  margin-left: -8px;
   display: grid; place-items: center;
-  font-size: 0.7rem;
-  color: #fff;
-  font-weight: 600;
+  color: var(--c-violet-200);
+  background: rgba(112, 99, 243, 0.15);
+  border: 1px solid rgba(155, 139, 244, 0.4);
 }
-.hero__avatars span:first-child { margin-left: 0; }
+.hero__trust__icon svg { width: 20px; height: 20px; }
+.hero__trust__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.25;
+}
+.hero__trust__copy strong {
+  color: var(--c-ink-0);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+}
+.hero__trust__sub {
+  color: var(--c-ink-3);
+  font-size: 0.78rem;
+}
+.hero__trust__chev {
+  display: grid; place-items: center;
+  width: 18px; height: 18px;
+  color: var(--c-violet-200);
+  transition: transform var(--t-base) var(--ease-out);
+}
+.hero__trust:hover .hero__trust__chev { transform: translateX(4px); }
+.hero__trust__chev svg { width: 12px; height: 12px; }
 
 /* —— Hero visual (right column on desktop) ——————————— */
 .hero__layout {
