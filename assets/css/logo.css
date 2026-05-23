@@ -90,49 +90,27 @@
  *   .beam-divider__lotus tiny mark in the section dividers (44 px)
  * Each shares the same sway/float/glow animations defined above. */
 
-/* Base subhero lotus — sits adjacent to the centered content block.
- * The subhero text column is max-width 760px and centered, so we anchor
- * the lotus relative to viewport-centre using calc(), with a fallback
- * so it never escapes off-screen on narrow viewports. */
+/* Sub-page hero lotus — lives inside .subhero__inner as a flex sibling
+ * of .subhero__copy. The flex container centres copy + lotus together
+ * so neither floats off into asymmetric empty space, and align-items
+ * keeps the lotus level with the heading row. */
 .subhero__lotus {
-  position: absolute;
+  flex: 0 0 200px;
   width: 200px;
   height: 200px;
-  z-index: 1;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
   filter: drop-shadow(0 0 28px rgba(112, 99, 243, 0.35));
 }
 
-/* Smaller variant — used on pages where the lotus should sit beside
- * shorter heading copy without overpowering it (e.g. Contact). */
-.subhero__lotus--sm { width: 150px; height: 150px; }
+/* Smaller variant — for pages with shorter heading copy where the
+ * default 200px lotus would visually outweigh the title (Contact,
+ * legal pages). */
+.subhero__lotus--sm { flex-basis: 150px; width: 150px; height: 150px; }
 
-/* Variants — calc() anchors the lotus just past the edge of the 760px
- * centred content column (380px half-width + breathing gap). Vertical
- * anchor is the heading row, not the section centre, so the lotus
- * reads as "level with the title" rather than floating mid-section. */
-.subhero__lotus--right {
-  top: calc(var(--nav-h) + 70px);
-  right: max(20px, calc(50% - 600px));
-  transform: none;
-}
-.subhero__lotus--left {
-  top: calc(var(--nav-h) + 70px);
-  left: max(20px, calc(50% - 600px));
-  transform: none;
-}
-.subhero__lotus--br {
-  bottom: -30px;
-  right: max(20px, calc(50% - 520px));
-}
-.subhero__lotus--bl {
-  bottom: -30px;
-  left: max(20px, calc(50% - 520px));
-}
-.subhero__lotus--tl {
-  top: calc(var(--nav-h) + 24px);
-  left: max(20px, calc(50% - 540px));
+/* Stack vertically on narrow screens so the heading isn't squashed. */
+@media (max-width: 880px) {
+  .subhero__lotus { display: none; }
 }
 
 @media (max-width: 880px) {

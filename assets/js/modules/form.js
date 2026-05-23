@@ -9,7 +9,7 @@
 import { $$ } from './utils.js';
 
 const ENDPOINT   = 'https://api.web3forms.com/submit';
-const ACCESS_KEY = 'PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE';
+const ACCESS_KEY = '4a70fd63-2af6-4466-aeff-0b825708d2f9';
 
 async function handleSubmit(form) {
   const data = new FormData(form);

@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
-h1 { font-size: var(--fs-5xl); letter-spacing: -0.03em; line-height: 1.02; }
+h1 { font-size: var(--fs-5xl); letter-spacing: -0.03em; line-height: 1.12; }
 h2 { font-size: var(--fs-3xl); }
 h3 { font-size: var(--fs-xl); }
 h4 { font-size: var(--fs-md); }
@@ -206,6 +206,15 @@ p  { color: var(--c-ink-2); line-height: 1.6; }
 .muted           { color: var(--c-ink-2); }
 .mono            { font-family: var(--font-mono); letter-spacing: 0; }
 
+/* background-clip:text crops at the element's content box, so any
+ * descender (g, y, p, q) that overshoots the line-height gets sliced
+ * off and reads as a chopped letter. inline-block + a sliver of
+ * padding-bottom give the glyphs room to fully render. */
+.gradient-text,
+.gradient-text-hot {
+  display: inline-block;
+  padding-bottom: 0.1em;
+}
 .gradient-text {
   background: var(--g-text);
   -webkit-background-clip: text;

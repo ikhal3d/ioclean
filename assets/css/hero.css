@@ -13,7 +13,7 @@
 
 .hero__title {
   font-size: var(--fs-5xl);
-  line-height: 1.02;
+  line-height: 1.12;
   font-weight: 600;
   letter-spacing: -0.035em;
   max-width: 18ch;
@@ -133,16 +133,28 @@
   width: 100%;
 }
 
-/* —— Sub-page heroes ——————————————————————————————————— */
+/* —— Sub-page heroes ———————————————————————————————————
+ * The inner is a centred flex row: copy on the left, lotus on the
+ * right, both vertically centred on the heading. The combined block
+ * is centred in the viewport so there's no asymmetric empty space —
+ * the lotus reads as part of the title row, not a floating accent. */
 .subhero {
   position: relative;
   padding: calc(var(--nav-h) + 72px) 0 var(--s-9);
   overflow: hidden;
 }
-.subhero__inner { position: relative; z-index: 2; max-width: 760px; }
+.subhero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  gap: var(--s-8);
+}
+.subhero__copy { flex: 1 1 auto; min-width: 0; }
 .subhero__title {
   font-size: var(--fs-4xl);
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: -0.03em;
 }
 .subhero__sub {
@@ -150,6 +162,11 @@
   color: var(--c-ink-2);
   font-size: var(--fs-md);
   max-width: 60ch;
+}
+
+/* Stack on narrow screens so the heading isn't squashed by the lotus. */
+@media (max-width: 880px) {
+  .subhero__inner { display: block; }
 }
 
 /* —— Clean ripple visual ——————————————————————————————
