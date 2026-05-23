@@ -113,9 +113,16 @@
   --s-11: 96px;
   --s-12: 128px;
 
-  /* —— Typography ——————————————————————————————————————— */
-  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* —— Typography ———————————————————————————————————————
+   * Brand kit calls for VAG Rounded Next (primary / display) and
+   * Didact Gothic (secondary / body). VAG Rounded Next is a paid
+   * Monotype face — when a licensed webfont .woff2 is dropped into
+   * /assets/fonts/ and registered via @font-face, it takes over
+   * automatically because it's first in the stack. Until then,
+   * Quicksand (Google Fonts, free, same rounded-geometric DNA)
+   * stands in for it. */
+  --font-display: 'VAG Rounded Next', 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Didact Gothic', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --fs-xs:   0.78rem;
