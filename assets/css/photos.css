@@ -339,8 +339,7 @@
   margin-top: var(--s-5);
   padding-top: var(--s-5);
   border-top: 1px solid var(--c-line);
-  display: flex; flex-direction: column;
-  gap: 6px;
+  text-align: center;
 }
 .footer__legal p { margin: 0; }
 .footer__legal strong { color: var(--c-ink-1); font-weight: 500; }

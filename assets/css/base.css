@@ -35,8 +35,12 @@ body {
  * Lives on a separate fixed pseudo-element (not background-attachment:
  * fixed on body) so it becomes its own compositor layer and isn't
  * repainted while scrolling.
- * Five gradients spread across the viewport so the page never goes
- * completely flat-dark as the user scrolls. */
+ *
+ * Two layers:
+ *   1. A base vertical gradient so brand colour is present at every
+ *      scroll position — the page never goes flat-dark.
+ *   2. Layered radial blobs add variation top, sides and bottom so
+ *      the gradient doesn't read as a single straight wash. */
 body::before {
   content: "";
   position: fixed;
@@ -44,16 +48,26 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    /* top-left violet */
-    radial-gradient(1100px 700px at 10% -8%,  rgba(112, 99, 243, 0.22), transparent 60%),
-    /* top-right cyan */
-    radial-gradient(900px 600px at 92% 6%,   rgba(125, 214, 251, 0.16), transparent 65%),
-    /* mid-left lavender */
-    radial-gradient(900px 700px at 5% 55%,   rgba(155, 139, 244, 0.12), transparent 65%),
-    /* mid-right teal */
-    radial-gradient(900px 700px at 100% 60%, rgba(91, 189, 212, 0.12), transparent 65%),
+    /* top-left violet bloom (matches the hero) */
+    radial-gradient(1100px 700px at 12% -6%,  rgba(112, 99, 243, 0.28), transparent 60%),
+    /* top-right cyan bloom */
+    radial-gradient(900px 600px at 92% 4%,   rgba(125, 214, 251, 0.22), transparent 65%),
+    /* mid-left lavender accent */
+    radial-gradient(900px 700px at 4% 50%,   rgba(155, 139, 244, 0.18), transparent 65%),
+    /* mid-right teal accent */
+    radial-gradient(900px 700px at 102% 55%, rgba(91, 189, 212, 0.18), transparent 65%),
+    /* lower-left mid-blue accent */
+    radial-gradient(900px 700px at 8% 90%, rgba(91, 120, 230, 0.18), transparent 65%),
     /* bottom-centre warm violet */
-    radial-gradient(1000px 600px at 50% 105%, rgba(112, 99, 243, 0.14), transparent 60%);
+    radial-gradient(1100px 700px at 50% 108%, rgba(112, 99, 243, 0.22), transparent 60%),
+    /* and a continuous vertical wash so colour never drops out */
+    linear-gradient(180deg,
+      rgba(112, 99, 243, 0.18) 0%,
+      rgba(155, 139, 244, 0.12) 22%,
+      rgba(125, 214, 251, 0.10) 45%,
+      rgba(91, 189, 212, 0.10) 65%,
+      rgba(112, 99, 243, 0.14) 85%,
+      rgba(155, 139, 244, 0.16) 100%);
 }
 
 img, svg, video {
