@@ -25,7 +25,11 @@ body {
   font-size: var(--fs-base);
   line-height: 1.55;
   color: var(--c-ink-1);
-  background: var(--c-bg-0);
+  /* No background-color on body — html carries the dark navy
+   * fallback and body::before paints the brand gradient layer
+   * on top. With a transparent body, the gradient is visible at
+   * every scroll position. */
+  background: transparent;
   overflow-x: clip;
   letter-spacing: -0.005em;
   font-feature-settings: "ss01", "cv11";
@@ -47,27 +51,33 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Brand gradient backdrop on a fixed-position layer.
+   * Painted over the dark navy fallback on <html> at every scroll
+   * position, so the page reads as the brand palette top-to-bottom
+   * instead of going flat-dark below the hero. */
   background:
     /* top-left violet bloom (matches the hero) */
-    radial-gradient(1100px 700px at 12% -6%,  rgba(112, 99, 243, 0.28), transparent 60%),
+    radial-gradient(1100px 700px at 12% -6%,  rgba(112, 99, 243, 0.55), transparent 60%),
     /* top-right cyan bloom */
-    radial-gradient(900px 600px at 92% 4%,   rgba(125, 214, 251, 0.22), transparent 65%),
+    radial-gradient(900px 600px at 92% 4%,    rgba(125, 214, 251, 0.40), transparent 65%),
     /* mid-left lavender accent */
-    radial-gradient(900px 700px at 4% 50%,   rgba(155, 139, 244, 0.18), transparent 65%),
+    radial-gradient(900px 700px at 4% 50%,    rgba(155, 139, 244, 0.38), transparent 65%),
     /* mid-right teal accent */
-    radial-gradient(900px 700px at 102% 55%, rgba(91, 189, 212, 0.18), transparent 65%),
+    radial-gradient(900px 700px at 102% 55%,  rgba(91, 189, 212, 0.36), transparent 65%),
     /* lower-left mid-blue accent */
-    radial-gradient(900px 700px at 8% 90%, rgba(91, 120, 230, 0.18), transparent 65%),
+    radial-gradient(900px 700px at 8% 90%,    rgba(91, 120, 230, 0.40), transparent 65%),
     /* bottom-centre warm violet */
-    radial-gradient(1100px 700px at 50% 108%, rgba(112, 99, 243, 0.22), transparent 60%),
-    /* and a continuous vertical wash so colour never drops out */
+    radial-gradient(1100px 700px at 50% 108%, rgba(112, 99, 243, 0.48), transparent 60%),
+    /* continuous vertical wash so colour is present at every scroll */
     linear-gradient(180deg,
-      rgba(112, 99, 243, 0.18) 0%,
-      rgba(155, 139, 244, 0.12) 22%,
-      rgba(125, 214, 251, 0.10) 45%,
-      rgba(91, 189, 212, 0.10) 65%,
-      rgba(112, 99, 243, 0.14) 85%,
-      rgba(155, 139, 244, 0.16) 100%);
+      rgba(112, 99, 243, 0.34) 0%,
+      rgba(155, 139, 244, 0.26) 22%,
+      rgba(125, 214, 251, 0.22) 45%,
+      rgba(91, 189, 212, 0.22) 65%,
+      rgba(112, 99, 243, 0.28) 85%,
+      rgba(155, 139, 244, 0.32) 100%),
+    /* dark navy base under the gradient so the contrast stays high */
+    var(--c-bg-0);
 }
 
 img, svg, video {
