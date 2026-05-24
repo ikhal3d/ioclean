@@ -154,7 +154,13 @@ p  { color: var(--c-ink-2); line-height: 1.6; }
 .page-splash.is-loaded {
   opacity: 0;
   visibility: hidden;
+  /* Drop it out of layout entirely so nothing (e.g. mobile nav
+   * drawer at lower z-index) can be visually trapped behind it
+   * if the visibility/opacity transition mis-fires. */
+  pointer-events: none;
 }
+/* After the fade transition completes, fully detach the splash. */
+.page-splash.is-loaded { transition-delay: 0s, 600ms; }
 /* Loading splash: the lotus brand mark with a subtle breathing pulse,
  * sitting inside a soft glow halo. Replaces the generic spinner. */
 .page-splash__mark {

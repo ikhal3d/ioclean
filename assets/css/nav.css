@@ -138,8 +138,10 @@
 /* —— Mobile drawer ————————————————————————————————————— */
 .nav-drawer {
   position: fixed;
-  inset: 0;
-  z-index: 99;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: 100vh;
+  height: 100dvh;          /* honour iOS dynamic viewport (URL bar) */
+  z-index: 1000;           /* above the page-splash (999) */
   pointer-events: none;
   opacity: 0;
   background:
