@@ -98,5 +98,9 @@ function makeField(canvas) {
 
 export function init() {
   if (prefersReducedMotion()) return;
+  // Skip on tablet + mobile — the per-frame canvas paint compounds
+  // with backdrop-filters and gradients to make scroll feel sluggish.
+  // CSS in mobile.css also display:none the .particles container.
+  if (window.innerWidth <= 1024) return;
   $$('.particles canvas').forEach(makeField);
 }

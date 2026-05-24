@@ -14,7 +14,10 @@ export function init() {
   const progress = $('.scroll-progress');
 
   if (!targets.length && !progress) return;
-  const reduced = prefersReducedMotion();
+  // Treat tablet + mobile like reduced-motion for the parallax math.
+  // The scroll-progress bar still runs (cheap), but per-target
+  // translate computations are skipped to keep scrolling smooth.
+  const reduced = prefersReducedMotion() || window.innerWidth <= 1024;
 
   onScroll(() => {
     if (progress) {

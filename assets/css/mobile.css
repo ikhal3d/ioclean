@@ -1,0 +1,154 @@
+/* ============================================================
+ * mobile.css
+ *
+ * Mobile + tablet performance overrides. Loaded last so it
+ * cascades over everything else. Desktop (> 1024px) is untouched.
+ *
+ * Goal: kill the GPU-heavy effects that read as "washed out" on
+ * small screens and make scrolling sluggish:
+ *   - backdrop-filter (blur + saturate) — extremely expensive per
+ *     scroll frame on mobile GPUs; also leaks the body::before
+ *     gradient through every card surface, which is what reads
+ *     as washed-out lavender/grey.
+ *   - drop-shadow / blur filters on lotus + glow blobs — same
+ *     compositor cost, compounded by being animated.
+ *   - Six-layer body::before gradient — heavy to paint on a fixed
+ *     layer that repaints during scroll on iOS Safari.
+ *   - <canvas data-density> particles — repaints every frame.
+ *   - will-change hints that pin GPU layers we no longer animate.
+ *
+ * Strategy: replace transparent / blurred surfaces with solid
+ * darker brand backgrounds so cards read sharp against the body,
+ * keep the brand colour but only via a static two-stop gradient,
+ * disable scroll-tracked motion. Visual identity stays, the
+ * performance cost drops a lot.
+ * ============================================================ */
+
+@media (max-width: 1024px) {
+
+  /* —— Body backdrop: replace 6 radial gradients with 2 ——— */
+  body::before {
+    background:
+      radial-gradient(900px 600px at 0% 0%,    rgba(112, 99, 243, 0.30), transparent 60%),
+      radial-gradient(900px 600px at 100% 100%, rgba(91, 120, 230, 0.25), transparent 60%),
+      var(--c-bg-0);
+  }
+
+  /* —— Kill backdrop-filter on every glass surface ————————
+   * Cards, nav, drawer, chips, photo badges, ghost buttons — they
+   * all relied on blur(12-14px) saturate(160%). On mobile this is
+   * what makes the page feel hazy and what spikes scroll cost. */
+  .card,
+  .nav,
+  .nav-drawer,
+  .chip,
+  .photo-badge,
+  .btn--ghost,
+  .compare__tag,
+  .testimonial-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Make cards solid against the body so they don't bleed through
+   * to the gradient and read washed-out. */
+  .card,
+  .feature-card,
+  .stat-card,
+  .compare__card,
+  .testimonial-card,
+  .info-card,
+  .package-card,
+  .area-list__row {
+    background: linear-gradient(180deg, #0f0c28, #0a0820) !important;
+  }
+  .nav {
+    background: rgba(10, 8, 32, 0.92) !important;
+  }
+  .nav-drawer {
+    background: rgba(8, 6, 28, 0.98) !important;
+  }
+  .chip {
+    background: #0e0b24 !important;
+  }
+
+  /* —— Drop GPU-expensive filters on decorative elements ——— */
+  .lotus__body,
+  .hero__lotus__glow,
+  .glow-blob,
+  .cta-banner__lotus,
+  .subhero__lotus,
+  .beam-divider__lotus,
+  .service-card__icon,
+  .feature-card__icon,
+  .chip__ico,
+  .area-list__dot,
+  .photo-badge,
+  .hero__photo,
+  .about-photo {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  /* Remove will-change on layers we no longer animate hard. */
+  .lotus__body,
+  .lotus__petal,
+  .hero__lotus__glow,
+  .reveal {
+    will-change: auto !important;
+  }
+
+  /* —— Calm down the lotus motion ————————————————————————
+   * Sway is still on at the same amplitude but slower cadence and
+   * no glow filter, so the GPU isn't recomputing drop-shadows. */
+  .lotus__body {
+    animation-duration: 12s !important;
+  }
+  .lotus__petal,
+  .lotus--md .lotus__petal {
+    animation-duration: 10s !important;
+  }
+
+  /* —— Particles canvas: hide on small screens ——————————— */
+  .particles { display: none !important; }
+
+  /* —— Stop the scroll-tracked card spotlight + tilt ———— */
+  .tilt { transform: none !important; }
+
+  /* —— Section glow ambient: simplify to a flat tint —— */
+  .section-glow { opacity: 0.4 !important; filter: none !important; }
+
+  /* —— Photo overlays: drop the colour-mix blend to save paint */
+  .hero__photo::before,
+  .field-tile::before,
+  .compare__photo::before,
+  .about-photo::before {
+    mix-blend-mode: normal !important;
+    opacity: 0.35;
+  }
+
+  /* —— Force GPU promotion on the body and main scroller so
+   * iOS Safari hands them to the compositor cleanly. */
+  body { transform: translateZ(0); }
+}
+
+/* —— Phone-only further restraint (≤ 640px) ——————————————
+ * Mobile devices are the most constrained — turn off remaining
+ * heavy animations entirely and let scrolling be the priority. */
+@media (max-width: 640px) {
+
+  /* Stop body backdrop entirely; flat brand navy is enough. */
+  body::before { background: var(--c-bg-0); }
+
+  /* Freeze decorative lotus animations on phones so scroll is
+   * never competing with petal keyframes for paint budget. */
+  .lotus__body,
+  .lotus__petal { animation: none !important; }
+  .lotus__body { transform: translate(50px, 60px); }
+
+  /* Disable the hero ripples + glow animations. */
+  .hero__lotus__glow { animation: none !important; }
+
+  /* Disable the CTA banner shimmer keyframe. */
+  .cta-banner::before { animation: none !important; }
+}
