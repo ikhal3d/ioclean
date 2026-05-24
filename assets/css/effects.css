@@ -186,7 +186,7 @@
   color: var(--c-violet-200);
   display: grid; place-items: center;
 }
-.chip__ico svg { width: 14px; height: 14px; }
+.chip__ico svg { width: 18px; height: 18px; }
 
 /* —— Eyebrow pill ————————————————————————————————————— */
 .eyebrow {
