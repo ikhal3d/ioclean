@@ -64,13 +64,19 @@
   will-change: transform;
 }
 
-.lotus__petal--1 { animation: sway-1 7.4s ease-in-out  0s   infinite; }
-.lotus__petal--2 { animation: sway-2 8.1s ease-in-out -1.2s infinite; }
-.lotus__petal--3 { animation: sway-3 6.8s ease-in-out -2.5s infinite; }
-.lotus__petal--4 { animation: sway-4 7.6s ease-in-out -3.8s infinite; }
-.lotus__petal--5 { animation: sway-5 7.0s ease-in-out -5.0s infinite; }
-.lotus__petal--6 { animation: sway-6 8.4s ease-in-out -6.2s infinite; }
-.lotus__petal--7 { animation: sway-7 7.2s ease-in-out -7.4s infinite; }
+/* Static base transforms match each petal's animation 0% / 100%
+ * pose. When the keyframe animation runs it overrides these; when
+ * it doesn't (prefers-reduced-motion, the phone-only animation:none
+ * override, or any browser that fails to start the animation), the
+ * petals stay in their fanned-out positions instead of collapsing
+ * to identity and stacking on top of each other at the top centre. */
+.lotus__petal--1 { transform: rotate(-115deg) scale(0.78); animation: sway-1 7.4s ease-in-out  0s   infinite; }
+.lotus__petal--2 { transform: rotate(-75deg)  scale(0.88); animation: sway-2 8.1s ease-in-out -1.2s infinite; }
+.lotus__petal--3 { transform: rotate(-35deg)  scale(0.96); animation: sway-3 6.8s ease-in-out -2.5s infinite; }
+.lotus__petal--4 { transform: rotate(0deg)    scale(1);    animation: sway-4 7.6s ease-in-out -3.8s infinite; }
+.lotus__petal--5 { transform: rotate(35deg)   scale(0.96); animation: sway-5 7.0s ease-in-out -5.0s infinite; }
+.lotus__petal--6 { transform: rotate(75deg)   scale(0.88); animation: sway-6 8.4s ease-in-out -6.2s infinite; }
+.lotus__petal--7 { transform: rotate(115deg)  scale(0.78); animation: sway-7 7.2s ease-in-out -7.4s infinite; }
 
 /* Graduated petal sizes — top apex largest, outermost smallest.
  * Scale is baked into the keyframe so it composes with rotation. */
