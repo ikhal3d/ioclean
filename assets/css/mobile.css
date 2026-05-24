@@ -81,10 +81,13 @@
     background: #0e0b24 !important;
   }
 
-  /* —— Drop GPU-expensive filters on decorative elements ——— */
+  /* —— Drop GPU-expensive filters on decorative elements ———
+   * NOTE: .glow-blob and .hero__lotus__glow deliberately keep their
+   * filter:blur(...) — without it those elements become hard-edged
+   * coloured circles bleeding through the page (this read as "washed
+   * up" on mobile). The blur is what makes them ambient lighting
+   * instead of solid bubbles. */
   .lotus__body,
-  .hero__lotus__glow,
-  .glow-blob,
   .cta-banner__lotus,
   .subhero__lotus,
   .beam-divider__lotus,
@@ -150,19 +153,13 @@
 @media (max-width: 640px) {
 
   /* Body backdrop stays full strength — the user wants the brand
-   * gradient running through the whole page, same as desktop. The
-   * scroll cost was never the static fixed gradient; it was the
-   * backdrop-filter on cards (already killed in the 1024px block). */
+   * gradient running through the whole page, same as desktop. */
 
-  /* Freeze decorative lotus animations on phones so scroll is
-   * never competing with petal keyframes for paint budget. */
-  .lotus__body,
-  .lotus__petal { animation: none !important; }
-  .lotus__body { transform: translate(50px, 60px); }
+  /* Keep the lotus sway running on phones too — the previous version
+   * froze it but the lotus is a brand signature and the cost is
+   * minimal once filters and backdrop-filters are off. */
 
-  /* Disable the hero ripples + glow animations. */
-  .hero__lotus__glow { animation: none !important; }
-
-  /* Disable the CTA banner shimmer keyframe. */
+  /* Disable the CTA banner shimmer keyframe — that one IS expensive
+   * (animating a 200% gradient) and adds little on a small screen. */
   .cta-banner::before { animation: none !important; }
 }
