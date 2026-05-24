@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#7063F3" aria-label="ioclean">
+  <g transform="translate(50 60)" fill-opacity="0.95">
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(-115)"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(-75)"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(-35)"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(35)"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(75)"/>
+    <path d="M0 0C-16-6-22-30 0-52C22-30 16-6 0 0Z" transform="rotate(115)"/>
+  </g>
+</svg>
