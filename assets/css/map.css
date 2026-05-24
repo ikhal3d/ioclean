@@ -156,11 +156,13 @@
   transform: translateX(4px);
 }
 .area-list__dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--c-violet-400);
-  box-shadow: 0 0 10px var(--c-violet-400);
+  width: 20px; height: 20px;
+  display: grid; place-items: center;
+  color: var(--c-violet-400);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(155, 139, 244, 0.45));
 }
+.area-list__dot svg { width: 20px; height: 20px; }
 .area-list__name {
   color: var(--c-ink-0);
   font-size: 0.95rem;
