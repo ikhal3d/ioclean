@@ -79,7 +79,6 @@ const SERVICE_MAP = {
   warehouse:          'Warehouse',
   'end-of-lease':     'End-of-lease',
   'post-construction':'Post-construction',
-  emergency:          'Emergency clean',
   'anti-viral':       'Anti-viral deep clean',
 };
 
